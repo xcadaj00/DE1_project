@@ -33,7 +33,7 @@ Write your text here.
 
 #### Matrix keyboard
 
-![](images/matrix.png)
+![Connection of button matrix to FPGA [1]](images/matrix.png)
 
 
 ## VHDL modules description and simulations
@@ -53,4 +53,4 @@ Write your text here.
 
 ## References
 
-   1. Write your text here.
+   1. Pantech. (2020, May 04). Vhdl-Code-For-Matrix-Keypad with -fpga and output shown in led,s. Retrieved April 09, 2021, from https://www.pantechsolutions.net/blog/vhdl-code-for-matrix-keypad/
