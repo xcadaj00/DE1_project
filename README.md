@@ -44,11 +44,11 @@ Write your text here.
 
 #### Top layer
 
-![](images/top.png)
+![](pcb/top.png)
 
 #### Bottom layer
 
-![](images/bottom.png)
+![](pcb/bottom.png)
 
 
 #### Connection of button matrix to FPGA [1]
