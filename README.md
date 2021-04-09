@@ -20,18 +20,18 @@ Write your text here.
 
 ### Used components
 
-- 2 pcs 40P Male header [](https://www.gme.cz/oboustranny-kolik-s1g40-2-54mm)
-- 1 pcs 5V Relay RAS-05-15 [](https://www.gme.cz/relras0515)
-- 1 pcs Screw terminal 3P [](https://www.gme.cz/svorkovnice-sroubovaci-do-dps-ark508-3p)
-- 1 pcs Diode 1N4007 [](https://www.gme.cz/dioda-1n4007w)
-- 5 pcs PNP transistor BC807 [](https://www.gme.cz/bipolarni-tranzistor-bc807-16-sot23)
-- 6 pcs Resistor 1K [](https://www.gme.cz/r0805-1k0-5-yageo)
-- 12 pcs Microswitch TC-0104-T [](https://www.gme.cz/tc-0104)
-- 3 pcs Resistor 10K [](https://www.gme.cz/r0805-10k-5-yageo)
-- 8 pcs Resistor 100R []()
-- 1 pcs 5mm LED red/green (common cathode) [](https://www.gme.cz/led-5mm-rg-cc-45-45-50-led-beg204)
-- 1 pcs LED display red HD-M514RD (common anode) [](https://www.gme.cz/led-display-14-2mm-red-hd-m514rd)
-- 1 pcs 5V Siren KXG0905C [](https://www.gme.cz/sirenka-kingstate-kxg-0905c)
+- 2 pcs 40P Male header [GMe.cz](https://www.gme.cz/oboustranny-kolik-s1g40-2-54mm)
+- 1 pcs 5V Relay RAS-05-15 [GMe.cz](https://www.gme.cz/relras0515)
+- 1 pcs Screw terminal 3P [GMe.cz](https://www.gme.cz/svorkovnice-sroubovaci-do-dps-ark508-3p)
+- 1 pcs Diode 1N4007 [GMe.cz](https://www.gme.cz/dioda-1n4007w)
+- 5 pcs PNP transistor BC807 [GMe.cz](https://www.gme.cz/bipolarni-tranzistor-bc807-16-sot23)
+- 6 pcs Resistor 1K [GMe.cz](https://www.gme.cz/r0805-1k0-5-yageo)
+- 12 pcs Microswitch TC-0104-T [GMe.cz](https://www.gme.cz/tc-0104)
+- 3 pcs Resistor 10K [GMe.cz](https://www.gme.cz/r0805-10k-5-yageo)
+- 8 pcs Resistor 100R 
+- 1 pcs 5mm LED red/green (common cathode) [GMe.cz](https://www.gme.cz/led-5mm-rg-cc-45-45-50-led-beg204)
+- 1 pcs LED display red HD-M514RD (common anode) [GMe.cz](https://www.gme.cz/led-display-14-2mm-red-hd-m514rd)
+- 1 pcs 5V Siren KXG0905C [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c)
 - Resistors for red&green LED
 
 ### Schematics
@@ -40,10 +40,10 @@ Write your text here.
 
 ### PCB design
 
-[](https://oshwlab.com/jan.cada/de1_project)
+[PCB design project](https://oshwlab.com/jan.cada/de1_project)
 
-![](images/top.svg)
-![](images/bottom.svg)
+![](images/top.png "Top layer")
+![](images/bottom.png "Bottom layer")
 
 
 #### Connection of button matrix to FPGA [1]
