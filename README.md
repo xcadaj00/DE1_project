@@ -33,7 +33,8 @@ Write your text here.
 
 #### Matrix keyboard
 
-![Connection of button matrix to FPGA [1]](images/matrix.png)
+![](images/matrix.png)
+Connection of button matrix to FPGA [1]
 
 
 ## VHDL modules description and simulations
