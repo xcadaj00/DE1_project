@@ -42,8 +42,13 @@ Write your text here.
 
 [PCB design project](https://oshwlab.com/jan.cada/de1_project)
 
-![](images/top.png "Top layer")
-![](images/bottom.png "Bottom layer")
+#### Top layer
+
+![](images/top.png)
+
+#### Bottom layer
+
+![](images/bottom.png)
 
 
 #### Connection of button matrix to FPGA [1]
