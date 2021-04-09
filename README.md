@@ -50,6 +50,13 @@ Write your text here.
 
 ![](pcb/bottom.png)
 
+#### Rendered top
+
+![](pcb/rendertop.png)
+
+#### Rendered top
+
+![](pcb/renderbottom.png)
 
 #### Connection of button matrix to FPGA [1]
 
