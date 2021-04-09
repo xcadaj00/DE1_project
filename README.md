@@ -2,10 +2,10 @@
 
 ### Team members
 
--Jan Čada
--Artem Denisov
--Milan Drahozal
--Adrián Dúbravka
+- Jan Čada
+- Artem Denisov
+- Milan Drahozal
+- Adrián Dúbravka
 
 [Link to GitHub project folder]( http://github.com/xcadaj00/DE1_project)
 
