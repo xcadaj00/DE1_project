@@ -16,14 +16,19 @@ Write your text here.
 
 ## Hardware description
 
-Used components are connected to Arty A7 board as shield. 
+Used components are connected to Arty A7 board as shield. PCB is designed in easyEDA. 
 
 ### Schematics
 
 
-### Table of pons and ports
 
-### Table of components
+### Table(s) of pins and ports
+
+
+
+### Table(s) of components
+
+
 
 ### Used parts list
 
