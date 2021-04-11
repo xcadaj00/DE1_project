@@ -54,7 +54,7 @@ Write your text here.
 
 ![](pcb/rendertop.png)
 
-#### Rendered top
+#### Rendered bottom
 
 ![](pcb/renderbottom.png)
 
