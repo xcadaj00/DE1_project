@@ -18,10 +18,6 @@ Write your text here.
 
 Used components are connected to Arty A7 board as shield. PCB is designed in easyEDA. 
 
-### Schematics
-
-
-
 ### Table(s) of pins and ports
 
 
@@ -109,6 +105,7 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 - 1 pcs LED display red HD-M514RD (common anode) [GMe.cz](https://www.gme.cz/led-display-14-2mm-red-hd-m514rd)
 - 1 pcs 5V Siren KXG0905C [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c)
 
+
 ### PCB design
 
 [PCB design project](https://oshwlab.com/jan.cada/de1_project)
@@ -129,10 +126,32 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 
 ![](pcb/renderbottom.png)
 
+
+### Schematics
+
 #### Connection of button matrix to FPGA [1]
 
 ![](images/matrix.png)
 
+#### Connection of button matrix to pins on Arty A7 Shield
+
+![](images/keyboard.jpg)
+
+#### Connection of 4-digit 7-segment display to pins on Arty A7 Shield
+
+![](images/display.jpg)
+
+#### Connection of door lock relay to pins on Arty A7 Shield
+
+![](images/relay.jpg)
+
+#### Connection of LEDs to pins on Arty A7 Shield
+
+![](images/led.jpg)
+
+#### Connection of siren to pins on Arty A7 Shield
+
+![](images/siren.jpg)
 
 
 ## VHDL modules description and simulations
