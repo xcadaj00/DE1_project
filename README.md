@@ -16,7 +16,29 @@ Write your text here.
 
 ## Hardware description
 
-Used components are connected to Arty A7 board as shield. PCB is designed in easyEDA. 
+Used components are connected to Arty A7 board as shield. 
+
+### Schematics
+
+#### Connection of button matrix to pins on Arty A7 Shield
+
+![](images/keyboard.jpg)
+
+#### Connection of 4-digit 7-segment display to pins on Arty A7 Shield
+
+![](images/display.jpg)
+
+#### Connection of door lock relay to pins on Arty A7 Shield
+
+![](images/relay.jpg)
+
+#### Connection of LEDs to pins on Arty A7 Shield
+
+![](images/led.jpg)
+
+#### Connection of siren to pins on Arty A7 Shield
+
+![](images/siren.jpg)
 
 ### Table(s) of pins and ports
 
@@ -84,6 +106,7 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 | 40P Male header 2.54mm | 2 | [GMe.cz](https://www.gme.cz/oboustranny-kolik-s1g40-2-54mm) |
 | 3P Screw terminal 5.08mm | 1 | [GMe.cz](https://www.gme.cz/svorkovnice-sroubovaci-do-dps-ark508-3p) |
 
+<!--
 ### Used parts list
 
 - 2 pcs 40P Male header [GMe.cz](https://www.gme.cz/oboustranny-kolik-s1g40-2-54mm)
@@ -101,6 +124,7 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 - 1 pcs 5mm LED red/green LED-BEG204 (common cathode) [GMe.cz](https://www.gme.cz/led-5mm-rg-cc-45-45-50-led-beg204)
 - 1 pcs LED display red HD-M514RD (common anode) [GMe.cz](https://www.gme.cz/led-display-14-2mm-red-hd-m514rd)
 - 1 pcs 5V Siren KXG0905C [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c)
+-->
 
 ### PCB design
 
@@ -123,33 +147,6 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 ![](pcb/renderbottom.png)
 
 
-### Schematics
-
-#### Connection of button matrix to FPGA [1]
-
-![](images/matrix.png)
-
-#### Connection of button matrix to pins on Arty A7 Shield
-
-![](images/keyboard.jpg)
-
-#### Connection of 4-digit 7-segment display to pins on Arty A7 Shield
-
-![](images/display.jpg)
-
-#### Connection of door lock relay to pins on Arty A7 Shield
-
-![](images/relay.jpg)
-
-#### Connection of LEDs to pins on Arty A7 Shield
-
-![](images/led.jpg)
-
-#### Connection of siren to pins on Arty A7 Shield
-
-![](images/siren.jpg)
-
-
 ## VHDL modules description and simulations
 
 Write your text here.
@@ -167,4 +164,5 @@ Write your text here.
 
 ## References
 
-   1. Pantech. (2020, May 04). Vhdl-Code-For-Matrix-Keypad with -fpga and output shown in led,s. Retrieved April 09, 2021, from https://www.pantechsolutions.net/blog/vhdl-code-for-matrix-keypad/
+   1. 
+   
