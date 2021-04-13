@@ -7,94 +7,8 @@ Shape Version=11.00
 Screen=1366,768
 MCAPVersion=12.2.0.4
 Key ID=Demo
-NLCnt=147
-TXCnt=43
-
-[shapedef]
-Name=Bjt.root
-Line=0,0,13,0
-Rectangle=13,-12,15,12
-Current=32,-24,32,-16
-Current=32,24,32,16
-Current=0,-8,8,-8
-PolyOpen=3
-PolyLine=24,-24
-PolyLine=24,-12
-PolyLine=14,-2
-PolyOpen=3
-PolyLine=24,24
-PolyLine=24,12
-PolyLine=14,2
-
-[shapedef]
-Name=Ground
-Line=0,0,12,0
-Line=12,-8,12,8
-Line=18,-4,18,4
-Line=24,0,24,0
-
-[shapedef]
-Name=PNP
-Root="Bjt.root",0,0,0
-PolyClosed=3
-PolyLine=17,-5
-PolyLine=21,-5
-PolyLine=17,-9
-Line=16,-4,14,-2
-Line=16,4,14,2
-
-[shapedef]
-Name=Resistor
-PolyOpen=12
-PolyLine=0,0
-PolyLine=0,0
-PolyLine=12,0
-PolyLine=14,-4
-PolyLine=18,4
-PolyLine=22,-4
-PolyLine=26,4
-PolyLine=30,-4
-PolyLine=34,4
-PolyLine=36,0
-PolyLine=48,0
-PolyLine=48,0
-Current=32,8,16,8
-
-[compdef]
-Name=Resistor
-Definition=Resistor
-Shape=Resistor
-Mask=6145
-Used=243
-memo=Resistor
-Label Offset=18,6,8,11
-PinCnt=2
-Pin="Plus",6,0,-10,-4
-Pin="Minus",0,0,-14,-4
-
-[compdef]
-Name=PNP
-Definition=PNP
-Shape=PNP
-Mask=4865
-Used=24
-memo=PNP Transistor
-Label Offset=37,-13,-8,35
-PinCnt=3
-Pin="Collector",3,3,6,3
-Pin="Base",0,0,-19,-3
-Pin="Emitter",3,-3,6,15
-
-[compdef]
-Name=Ground
-Definition=Ground
-Shape=Ground
-Mask=1
-Used=304
-memo=Ground
-Label Offset=0,0,0,0
-PinCnt=1
-Pin="PinA",0,0,-3,-7
+NLCnt=67
+TXCnt=45
 
 [Circuit]
 Window Placement=2,3, -1,-1, -8,-31, 104,104,977,531
@@ -126,500 +40,57 @@ Show Grid Text=True
 [Object]
 Object=Rectangle
 CBorder=#000080
-Px=1165,335,1387,440
+Px=253,442,412,669
 
 [Object]
 Object=Rectangle
 CBorder=#000080
-Px=95,452,254,679
-
-[Object]
-Object=Rectangle
-CBorder=#000080
-Px=582,508,879,709
-
-[Wire]
-Pxs=552,384,552,408
-
-[Comp]
-Name=Resistor
-Px=632,328
-Rot=5
-
-[Attr]
-ON=8,-25,PART
-V=R12
-Style=8192
-
-[Attr]
-ON=8,-39,RESISTANCE
-V=1K
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=712,328
-Rot=5
-
-[Attr]
-ON=8,-25,PART
-V=R13
-Style=8192
-
-[Attr]
-ON=8,-39,RESISTANCE
-V=1K
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=792,328
-Rot=5
-
-[Attr]
-ON=8,-25,PART
-V=R14
-Style=8192
-
-[Attr]
-ON=8,-39,RESISTANCE
-V=1K
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=872,328
-Rot=5
-
-[Attr]
-ON=8,-25,PART
-V=R15
-Style=8192
-
-[Attr]
-ON=8,-39,RESISTANCE
-V=1K
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
+Px=579,538,822,698
 
 [Wire]
 Pxs=632,176,632,184
 
 [Wire]
-Pxs=712,184,712,280
+Pxs=696,176,696,184
 
 [Wire]
-Pxs=792,176,792,184
+Pxs=728,176,728,184
 
 [Wire]
-Pxs=872,176,872,184
+Pxs=552,552,592,552
 
 [Wire]
-Pxs=600,456,600,464
+Pxs=552,552,552,704
 
 [Wire]
-Pxs=688,456,688,464
+Pxs=240,704,552,704
 
 [Wire]
-Pxs=768,456,768,464
+Pxs=440,192,440,672
 
 [Wire]
-Pxs=848,456,848,464
+Pxs=456,192,456,656
 
 [Wire]
-Pxs=600,464,600,488
+Pxs=424,192,424,688
 
 [Wire]
-Pxs=688,464,688,488
+Pxs=472,192,472,640
 
 [Wire]
-Pxs=768,464,768,488
+Pxs=488,192,488,624
 
 [Wire]
-Pxs=848,464,848,488
-
-[Comp]
-Name=PNP
-Px=600,464
-Rot=3
-
-[Attr]
-ON=-7,-49,PART
-V=T1
-Style=8192
-
-[Attr]
-ON=-33,-63,MODEL
-V=BC807
-
-[Attr]
-ON=-37,-91,PACKAGE
-V=SOT-23
-
-[Comp]
-Name=PNP
-Px=688,464
-Rot=3
-
-[Attr]
-ON=-7,-49,PART
-V=T2
-Style=8192
-
-[Attr]
-ON=-33,-63,MODEL
-V=BC807
-
-[Attr]
-ON=-37,-91,PACKAGE
-V=SOT-23
+Pxs=504,192,504,608
 
 [Wire]
-Pxs=552,440,576,440
-
-[Wire]
-Pxs=552,424,664,424
-
-[Wire]
-Pxs=664,424,664,440
-
-[Wire]
-Pxs=552,424,552,440
-
-[Wire]
-Pxs=632,328,632,440
-
-[Comp]
-Name=PNP
-Px=768,464
-Rot=3
-
-[Attr]
-ON=-7,-49,PART
-V=T3
-Style=8192
-
-[Attr]
-ON=-33,-63,MODEL
-V=BC807
-
-[Attr]
-ON=-37,-91,PACKAGE
-V=SOT-23
-
-[Wire]
-Pxs=552,408,744,408
-
-[Wire]
-Pxs=744,408,744,440
-
-[Wire]
-Pxs=552,408,552,424
-
-[Comp]
-Name=PNP
-Px=848,464
-Rot=3
-
-[Attr]
-ON=-7,-49,PART
-V=T4
-Style=8192
-
-[Attr]
-ON=-33,-63,MODEL
-V=BC807
-
-[Attr]
-ON=-37,-91,PACKAGE
-V=SOT-23
-
-[Wire]
-Pxs=552,384,824,384
-
-[Wire]
-Pxs=824,384,824,440
-
-[Wire]
-Pxs=712,328,712,440
-
-[Wire]
-Pxs=792,328,792,440
-
-[Wire]
-Pxs=872,328,872,440
-
-[Wire]
-Pxs=624,440,632,440
-
-[Wire]
-Pxs=552,440,552,712
-
-[Wire]
-Pxs=80,712,552,712
-
-[Comp]
-Name=Resistor
-Px=440,240
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R11
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,288
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R10
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,336
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R9
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,392
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R8
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,440
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R7
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,488
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R6
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,544
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R5
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Resistor
-Px=440,600
-Rot=6
-
-[Attr]
-ON=-34,6,PART
-V=R4
-Style=8192
-
-[Attr]
-ON=-42,20,RESISTANCE
-V=100
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Wire]
-Pxs=448,544,448,672
-
-[Wire]
-Pxs=456,488,456,656
-
-[Wire]
-Pxs=440,488,456,488
-
-[Wire]
-Pxs=440,600,440,688
-
-[Wire]
-Pxs=440,544,448,544
-
-[Wire]
-Pxs=472,440,472,640
-
-[Wire]
-Pxs=440,440,472,440
-
-[Wire]
-Pxs=488,392,488,624
-
-[Wire]
-Pxs=440,392,488,392
-
-[Wire]
-Pxs=504,336,504,608
-
-[Wire]
-Pxs=440,336,504,336
-
-[Wire]
-Pxs=520,288,520,592
-
-[Wire]
-Pxs=440,288,520,288
+Pxs=520,192,520,592
 
 [Wire]
 Pxs=536,576,592,576
 
 [Wire]
-Pxs=536,240,536,576
-
-[Wire]
-Pxs=440,240,536,240
-
-[Wire]
-Pxs=384,240,392,240
-
-[Wire]
-Pxs=384,192,384,240
-
-[Wire]
-Pxs=368,288,392,288
-
-[Wire]
-Pxs=352,336,392,336
-
-[Wire]
-Pxs=352,192,352,336
-
-[Wire]
-Pxs=336,392,392,392
-
-[Wire]
-Pxs=336,192,336,392
-
-[Wire]
-Pxs=320,440,392,440
-
-[Wire]
-Pxs=320,192,320,440
-
-[Wire]
-Pxs=304,488,392,488
-
-[Wire]
-Pxs=304,192,304,488
-
-[Wire]
-Pxs=288,544,392,544
-
-[Wire]
-Pxs=288,192,288,544
-
-[Wire]
-Pxs=272,600,392,600
-
-[Wire]
-Pxs=272,192,272,600
-
-[Wire]
-Pxs=368,192,368,288
+Pxs=536,192,536,576
 
 [Wire]
 Pxs=520,592,592,592
@@ -637,232 +108,58 @@ Pxs=472,640,592,640
 Pxs=456,656,592,656
 
 [Wire]
-Pxs=448,672,592,672
+Pxs=440,672,592,672
 
 [Wire]
-Pxs=440,688,592,688
+Pxs=424,688,592,688
 
 [Wire]
-Pxs=160,192,160,200
+Pxs=320,184,320,192
 
 [Wire]
-Pxs=176,200,176,456
+Pxs=336,192,336,448
 
 [Wire]
-Pxs=192,200,192,456
+Pxs=352,192,352,448
 
 [Wire]
-Pxs=208,200,208,456
+Pxs=368,192,368,448
 
 [Wire]
-Pxs=224,200,224,456
+Pxs=384,192,384,448
 
 [Wire]
-Pxs=240,200,240,456
+Pxs=400,192,400,448
 
 [Wire]
-Pxs=80,416,80,712
+Pxs=240,408,240,704
 
 [Wire]
-Pxs=80,416,112,416
+Pxs=240,408,272,408
 
 [Wire]
-Pxs=112,416,112,456
+Pxs=272,408,272,448
 
 [Wire]
-Pxs=552,712,552,744
+Pxs=552,704,552,744
 
 [Wire]
-Pxs=144,192,144,200
+Pxs=304,184,304,192
 
 [Wire]
-Pxs=144,200,144,456
+Pxs=304,192,304,448
 
 [Wire]
-Pxs=160,200,160,456
+Pxs=320,192,320,448
 
 [Wire]
-Pxs=600,488,600,520
-
-[Wire]
-Pxs=688,488,688,520
-
-[Wire]
-Pxs=768,488,768,520
-
-[Wire]
-Pxs=848,488,848,520
-
-[Object]
-Object=Ellipse
-CBorder=#000080
-Px=1016,429,1112,518
-
-[Wire]
-Pxs=1000,480,1048,480
-
-[Wire]
-Pxs=1080,480,1128,480
-
-[Comp]
-Name=Ground
-Px=1128,480
-Rot=1
-
-[Comp]
-Name=PNP
-Px=928,464
-Rot=3
-
-[Attr]
-ON=-7,-49,PART
-V=T5
-Style=8192
-
-[Attr]
-ON=-33,-63,MODEL
-V=BC807
-
-[Attr]
-ON=-37,-91,PACKAGE
-V=SOT-23
-
-[Comp]
-Name=PNP
-Px=1000,464
-Rot=3
-
-[Attr]
-ON=-7,-49,PART
-V=T6
-Style=8192
-
-[Attr]
-ON=-33,-63,MODEL
-V=BC807
-
-[Attr]
-ON=-37,-91,PACKAGE
-V=SOT-23
-
-[Wire]
-Pxs=632,184,632,280
-
-[Wire]
-Pxs=712,176,712,184
-
-[Wire]
-Pxs=792,184,792,280
-
-[Wire]
-Pxs=872,184,872,280
+Pxs=664,176,664,184
 
 [Wire]
 Pxs=584,728,584,744
 
 [Wire]
-Pxs=584,728,896,728
-
-[Wire]
-Pxs=896,440,896,728
-
-[Wire]
-Pxs=896,440,904,440
-
-[Wire]
-Pxs=896,408,896,440
-
-[Wire]
-Pxs=896,408,976,408
-
-[Wire]
-Pxs=976,408,976,440
-
-[Wire]
-Pxs=952,328,952,440
-
-[Wire]
-Pxs=1000,464,1000,480
-
-[Wire]
-Pxs=928,464,928,528
-
-[Wire]
-Pxs=928,528,1144,528
-
-[Comp]
-Name=Resistor
-Px=952,328
-Rot=5
-
-[Attr]
-ON=8,-25,PART
-V=R16
-Style=8192
-
-[Attr]
-ON=8,-39,RESISTANCE
-V=1K
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Wire]
-Pxs=952,176,952,184
-
-[Wire]
-Pxs=1024,176,1024,184
-
-[Wire]
-Pxs=952,184,952,280
-
-[Wire]
-Pxs=1024,184,1024,280
-
-[Comp]
-Name=Resistor
-Px=1024,328
-Rot=5
-
-[Attr]
-ON=9,-25,PART
-V=R17
-Style=8192
-
-[Attr]
-ON=8,-39,RESISTANCE
-V=1K
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Wire]
-Pxs=1024,328,1024,440
-
-[Wire]
-Pxs=1144,424,1144,528
-
-[Wire]
-Pxs=1144,424,1184,424
-
-[Wire]
-Pxs=1088,392,1184,392
-
-[Wire]
-Pxs=1088,176,1088,184
-
-[Wire]
-Pxs=1120,360,1184,360
-
-[Wire]
-Pxs=1120,176,1120,360
-
-[Wire]
-Pxs=1088,184,1088,392
+Pxs=584,728,888,728
 
 [Wire]
 Pxs=592,576,600,576
@@ -888,9 +185,71 @@ Pxs=592,672,600,672
 [Wire]
 Pxs=592,688,600,688
 
+[Wire]
+Pxs=632,184,632,552
+
+[Wire]
+Pxs=664,184,664,552
+
+[Wire]
+Pxs=696,184,696,552
+
+[Wire]
+Pxs=728,184,728,552
+
+[Object]
+Object=Ellipse
+CBorder=#000080
+Px=815,422,911,511
+
+[Wire]
+Pxs=888,472,888,728
+
+[Wire]
+Pxs=792,184,792,472
+
+[Wire]
+Pxs=792,472,848,472
+
+[Object]
+Object=Rectangle
+CBorder=#000080
+Px=915,344,1088,421
+
+[Wire]
+Pxs=760,184,760,408
+
+[Wire]
+Pxs=888,360,888,472
+
+[Wire]
+Pxs=888,360,920,360
+
+[Wire]
+Pxs=840,376,920,376
+
+[Wire]
+Pxs=840,176,840,184
+
+[Wire]
+Pxs=816,392,920,392
+
+[Wire]
+Pxs=816,176,816,184
+
+[Wire]
+Pxs=816,184,816,392
+
+[Wire]
+Pxs=840,184,840,376
+
+[Wire]
+Pxs=760,408,920,408
+
 [Grid Text]
-Text="Relay"
-Px=1248,392
+Text="Siren"
+Px=840,456
+Height=-18
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
@@ -898,15 +257,18 @@ CBorder=None
 
 [Grid Text]
 Text="4x3 keyboard"
-Px=120,560
+Px=272,552
+Height=-18
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
 CBorder=None
 
 [Grid Text]
-Text="4-digit 7-segment display"
-Px=648,608
+Text="4-digit"
+Text="7-segment display"
+Px=616,632
+Height=-18
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
@@ -923,7 +285,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO33"
-Px=712,184
+Px=664,184
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -932,7 +294,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO32"
-Px=792,184
+Px=696,184
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -941,79 +303,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO5"
-Px=872,184
-Angle=90
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO7"
-Px=384,192
-Angle=91
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO8"
-Px=368,192
-Angle=90
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO9"
-Px=352,192
-Angle=90
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO10"
-Px=336,192
-Angle=91
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO11"
-Px=320,192
-Angle=90
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO12"
-Px=304,192
-Angle=90
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO13"
-Px=288,192
-Angle=88
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="G"
-Px=272,192
+Px=728,184
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1022,7 +312,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO41"
-Px=144,200
+Px=304,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1031,7 +321,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO40"
-Px=160,200
+Px=320,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1040,7 +330,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO39"
-Px=176,200
+Px=336,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1049,7 +339,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO38"
-Px=192,200
+Px=352,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1058,7 +348,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO37"
-Px=208,200
+Px=368,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1067,7 +357,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO36"
-Px=224,200
+Px=384,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1076,7 +366,7 @@ CBorder=None
 
 [Grid Text]
 Text="IO35"
-Px=240,200
+Px=400,192
 Angle=90
 GridSnap=True
 JustifyH=Left
@@ -1092,100 +382,8 @@ JustifyV=Bottom
 CBorder=None
 
 [Grid Text]
-Text="12"
-Px=600,488
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="9"
-Px=688,488
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="8"
-Px=768,488
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="6"
-Px=848,488
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="Siren"
-Px=1048,456
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="+"
-Px=1048,480
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="-"
-Px=1080,480
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO31"
-Px=952,184
-Angle=92
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO4"
-Px=1024,184
-Angle=94
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
 Text="5V0"
 Px=584,744
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="IO30"
-Px=1088,184
-Angle=90
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="I03"
-Px=1120,176
-Angle=90
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
@@ -1255,6 +453,187 @@ JustifyH=Left
 JustifyV=Bottom
 CBorder=None
 
+[Grid Text]
+Text="IO14"
+Px=536,192
+Angle=91
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO15"
+Px=520,192
+Angle=90
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO16"
+Px=504,192
+Angle=90
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO17"
+Px=488,192
+Angle=91
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO18"
+Px=472,192
+Angle=90
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO19"
+Px=456,192
+Angle=90
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO20"
+Px=440,192
+Angle=88
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="G1"
+Px=424,192
+Angle=90
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="12"
+Px=632,552
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="9"
+Px=664,552
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="8"
+Px=696,552
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="6"
+Px=728,552
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO4"
+Px=792,184
+Angle=94
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="+"
+Px=888,472
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="-"
+Px=848,472
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="Relay + LED"
+Px=952,384
+Height=-18
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO31"
+Px=760,184
+Angle=91
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO30"
+Px=816,184
+Angle=91
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="IO3"
+Px=840,184
+Angle=94
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="relay_in1"
+Px=920,360
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
+[Grid Text]
+Text="relay_in2"
+Px=920,408
+GridSnap=True
+JustifyH=Left
+JustifyV=Bottom
+CBorder=None
+
 [Schematic]
 CurrentSection 0=0
 CurrentSection 1=0
@@ -1263,7 +642,7 @@ CurrentSection 3=0
 Splitter.xs=0
 Splitter.ys=0
 TextQuad=4099
-Scale=1.3333333333333333
+Scale=2
 GridUser=10
 ShapeGroups="Main","Euro","Polarity","Main1","Main11","Electrolytic","GroundArrow","DeMorgan"
 CalcRMS=False
@@ -1451,9 +830,8 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=0,96
-Scale 3=1.3333333333333333
-Px=1091,304
+Scale 3=2
+Px=1074,552
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
