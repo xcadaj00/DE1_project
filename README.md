@@ -90,7 +90,7 @@ Used components are connected to Arty A7 board as shield.
 #### Siren
 
 | **Label** | **Type** | **Voltage** | **Quantity** | **Link** | 
-| :-: | :-: | :-: | :-: |
+| :-: | :-: | :-: | :-: | :-: |
 | SIREN | KXG0905C | 5V | 1 | [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c) |
 
 #### Switch
