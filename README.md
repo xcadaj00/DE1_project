@@ -71,6 +71,25 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 
 ![](images/matrix.png)
 
+#### Connection of button matrix to pins on Arty A7 Shield
+
+![](images/keyboard.jpg)
+
+#### Connection of 4-digit 7-segment display to pins on Arty A7 Shield
+
+![](images/display.jpg)
+
+#### Connection of door lock relay to pins on Arty A7 Shield
+
+![](images/relay.jpg)
+
+#### Connection of LEDs to pins on Arty A7 Shield
+
+![](images/led.jpg)
+
+#### Connection of siren to pins on Arty A7 Shield
+
+![](images/siren.jpg)
 
 
 ## VHDL modules description and simulations
