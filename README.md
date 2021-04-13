@@ -20,23 +20,23 @@ Used components are connected to Arty A7 board as shield.
 
 ### Schematics
 
-#### Connection of button matrix to pins on Arty A7 Shield
+#### Button matrix
 
 ![](images/keyboard.jpg)
 
-#### Connection of 4-digit 7-segment display to pins on Arty A7 Shield
+#### 4-digit 7-segment display
 
 ![](images/display.jpg)
 
-#### Connection of door lock relay to pins on Arty A7 Shield
+#### Door lock relay
 
 ![](images/relay.jpg)
 
-#### Connection of LEDs to pins on Arty A7 Shield
+#### Red/Green LED
 
 ![](images/led.jpg)
 
-#### Connection of siren to pins on Arty A7 Shield
+#### Siren
 
 ![](images/siren.jpg)
 
