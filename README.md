@@ -67,9 +67,9 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 
 #### Siren
 
-| **Label** | **Voltage** | **Quantity** | **Link** | 
+| **Label** | **Type** | **Voltage** | **Quantity** | **Link** | 
 | :-: | :-: | :-: | :-: |
-| SIREN | 5V | 1 | [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c) |
+| SIREN | KXG0905C | 5V | 1 | [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c) |
 
 #### Switch
 
@@ -84,9 +84,6 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 | 40P Male header 2.54mm | 2 | [GMe.cz](https://www.gme.cz/oboustranny-kolik-s1g40-2-54mm) |
 | 3P Screw terminal 5.08mm | 1 | [GMe.cz](https://www.gme.cz/svorkovnice-sroubovaci-do-dps-ark508-3p) |
 
-
-
-
 ### Used parts list
 
 - 2 pcs 40P Male header [GMe.cz](https://www.gme.cz/oboustranny-kolik-s1g40-2-54mm)
@@ -98,13 +95,12 @@ Used components are connected to Arty A7 board as shield. PCB is designed in eas
 - 6 pcs Resistor 1K [GMe.cz](https://www.gme.cz/r0805-1k0-5-yageo)
 - 3 pcs Resistor 10K [GMe.cz](https://www.gme.cz/r0805-10k-5-yageo)
 - 8 pcs Resistor 100R [GMe.cz](https://www.gme.cz/r0805-100r-1-yageo)
-- 1 pcs Resistor 56R [GMe.cz](https://www.gme.cz/r0805-56r-1-yageo)
-- 1 pcs Resistor 68R [GMe.cz](https://www.gme.cz/r0805-68r-5-yageo)
+- 1 pcs Resistor 110R [GMe.cz](https://www.gme.cz/r0805-110r-5-yageo)
+- 1 pcs Resistor 130R [GMe.cz](https://www.gme.cz/r0805-130r-5-yageo)
 - 12 pcs Microswitch OFF-(ON) TC-0107-T [GMe.cz](https://www.gme.cz/mikrospinac-do-dps-tc-0107-t)
-- 1 pcs 5mm LED red/green (common cathode) [GMe.cz](https://www.gme.cz/led-5mm-rg-cc-45-45-50-led-beg204)
+- 1 pcs 5mm LED red/green LED-BEG204 (common cathode) [GMe.cz](https://www.gme.cz/led-5mm-rg-cc-45-45-50-led-beg204)
 - 1 pcs LED display red HD-M514RD (common anode) [GMe.cz](https://www.gme.cz/led-display-14-2mm-red-hd-m514rd)
 - 1 pcs 5V Siren KXG0905C [GMe.cz](https://www.gme.cz/sirenka-kingstate-kxg-0905c)
-
 
 ### PCB design
 
