@@ -40,8 +40,75 @@ Used components are connected to Arty A7 board as shield.
 
 ![](images/siren.jpg)
 
-### Table(s) of pins and ports
+### Tables of pins and ports
 
+## Connection of button matrix 
+
+| Component | Pin on board | Pin on FPGA |
+| :-:  | :-:  | :-: |
+| BTN1 | IO38, IO41 | U12, U14 |
+| BTN2 | IO38, IO40 | U12, V14 |
+| BTN3 | IO38, IO39 | U12, T13 |
+| BTN4 | IO37, IO41 | V12, U14 |
+| BTN5 | IO37, IO40 | V12, V14 |
+| BTN6 | IO37, IO39 | V12, T13 |
+| BTN7 | IO36, IO41 | V10, U14 |
+| BTN8 | IO36, IO40 | V10, V14 |
+| BTN9 | IO36, IO39 | V10, T13 |
+| BTN10 | IO35, IO41 | V11, U14 |
+| BTN11 | IO35, IO40 | V11, V14 |
+| BTN12 | IO35, IO39 | V11, T13 |
+
+## Connection of 7-segment displays
+
+Cathodes
+LEDs light up when cathode is low (i.e. 0)
+
+![Screenshot od EDA Playground](images/7segdis.png)
+
+| Component | display Pin | Pin on board | Pin on FPGA |
+|    :-:    |    :-:      |     :-:      |     :-:     |
+| CA | 11 | IO7 | G13 |
+| CB | 2 | IO8 | B11 |
+| CC | 4 | IO10 | A12 |
+| CD | 2 | IO12 | D12 |
+| CE | 1 | IO13 | D13 |
+| CF | 10 | IO34 | B18 |
+| CG | 5 | IO9 | A18 |
+| CDP | 3 | IO11 | K16 |
+
+Anodes
+Transistor is open when 0V applied to its base, so digit can light up
+
+| Component | display Pin | Pin on board | Pin on FPGA |
+|    :-:    |    :-:      |     :-:      |     :-:     |
+| A1 | 12 | IO6 | E15 |
+| A2 | 9 | IO33 | E16 |
+| A3 | 8 | IO32 | D15 |
+| A4 | 6 | IO5 | C15 |
+
+## Connection of Relay
+
+| Pin on board | Pin on FPGA |
+|    :-:    |     :-:    |
+| IO31 | K15 |
+
+## Connection of LED 
+
+LEDs light up when cathode is high (i.e. 1)
+
+| Component | Pin on board | Pin on FPGA |
+|    :-:    |    :-:     |     :-:     | 
+| Green LED | IO3 | J18 |
+| Red LED | IO30 | J17 |
+
+## Connection of Siren
+
+Transistor is open when 1V applied to its base, so SIREN can turn on 
+
+| Pin on board | Pin on FPGA |
+|    :-:    |     :-:    |
+| IO4 | J15 | 
 
 
 ### Tables of components
