@@ -42,7 +42,7 @@ Used components are connected to Arty A7 board as shield.
 
 ### Tables of pins and ports
 
-## Connection of button matrix 
+#### Connection of button matrix 
 
 | Component | Pin on board | Pin on FPGA |
 | :-:  | :-:  | :-: |
@@ -59,12 +59,13 @@ Used components are connected to Arty A7 board as shield.
 | BTN11 | IO35, IO40 | V11, V14 |
 | BTN12 | IO35, IO39 | V11, T13 |
 
-## Connection of 7-segment displays
-
-Cathodes
-LEDs light up when cathode is low (i.e. 0)
+#### Connection of 7-segment displays
 
 ![Screenshot od EDA Playground](images/7segdis.png)
+
+Cathodes
+
+LEDs light up when cathode is low (i.e. 0)
 
 | Component | display Pin | Pin on board | Pin on FPGA |
 |    :-:    |    :-:      |     :-:      |     :-:     |
@@ -78,6 +79,7 @@ LEDs light up when cathode is low (i.e. 0)
 | CDP | 3 | IO11 | K16 |
 
 Anodes
+
 Transistor is open when 0V applied to its base, so digit can light up
 
 | Component | display Pin | Pin on board | Pin on FPGA |
@@ -87,13 +89,13 @@ Transistor is open when 0V applied to its base, so digit can light up
 | A3 | 8 | IO32 | D15 |
 | A4 | 6 | IO5 | C15 |
 
-## Connection of Relay
+#### Connection of Relay
 
 | Pin on board | Pin on FPGA |
 |    :-:    |     :-:    |
 | IO31 | K15 |
 
-## Connection of LED 
+#### Connection of LED 
 
 LEDs light up when cathode is high (i.e. 1)
 
@@ -102,7 +104,7 @@ LEDs light up when cathode is high (i.e. 1)
 | Green LED | IO3 | J18 |
 | Red LED | IO30 | J17 |
 
-## Connection of Siren
+#### Connection of Siren
 
 Transistor is open when 1V applied to its base, so SIREN can turn on 
 
