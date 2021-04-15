@@ -61,7 +61,7 @@ Used components are connected to Arty A7 board as shield.
 
 #### Connection of 7-segment displays
 
-![Screenshot od EDA Playground](images/7segdis.png)
+![Screenshot od EDA Playground](images/7segdis.png){:height="50%" width="50%"}
 
 Cathodes
 
