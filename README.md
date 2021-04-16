@@ -91,13 +91,15 @@ Transistor is open when 0V applied to its base, so digit can light up
 
 #### Connection of Relay
 
+Relay contacts will switch when 3.3V (i.e. 1) is applied to the base of transisor
+
 | Pin on board | Pin on FPGA |
 |    :-:    |     :-:    |
 | IO31 | K15 |
 
 #### Connection of LED 
 
-LEDs light up when cathode is high (i.e. 1)
+LEDs light up when anode is high (i.e. 1)
 
 | Component | Pin on board | Pin on FPGA |
 |    :-:    |    :-:     |     :-:     | 
@@ -106,7 +108,7 @@ LEDs light up when cathode is high (i.e. 1)
 
 #### Connection of Siren
 
-Transistor is open when 1V applied to its base, so SIREN can turn on 
+Transistor is open when 3.3V (i.e. 1) is applied to its base, so SIREN will turn on 
 
 | Pin on board | Pin on FPGA |
 |    :-:    |     :-:    |
