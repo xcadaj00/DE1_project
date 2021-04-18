@@ -239,25 +239,25 @@ Transistor is open when 3.3V (i.e. 1) is applied to its base, so SIREN will turn
 
 ## VHDL modules description and simulations
 
-### 'keyboard.vhd'
+### `keyboard.vhd`
 
 This module is used to periodically read pressed buttons from 4*3 matrix keyboard into 4bit output as follows: 
 
 | Button | Output |
 | :-:  | :-:  |
-| 0 | '0000' |
-| 1 | '0001' |
-| 2 | '0010' |
-| 3 | '0011' |
-| 4 | '0100' |
-| 5 | '0101' |
-| 6 | '0110' |
-| 7 | '0111' |
-| 8 | '1000' |
-| 9 | '1001' |
-| CLEAR | '1010' |
-| ENTER | '1011' |
-| default | '1111' |
+| 0 | `0000` |
+| 1 | `0001` |
+| 2 | `0010` |
+| 3 | `0011` |
+| 4 | `0100` |
+| 5 | `0101` |
+| 6 | `0110` |
+| 7 | `0111` |
+| 8 | `1000` |
+| 9 | `1001` |
+| CLEAR | `1010` |
+| ENTER | `1011` |
+| default | `1111` |
 
 #### Design module code
 
@@ -275,7 +275,7 @@ This module is used to periodically read pressed buttons from 4*3 matrix keyboar
 
 ![](images/keyboard_tb.png)
 
-### 'fsm.vhd'
+### `fsm.vhd`
 
 This module is main function module implementing finite state machine
 
@@ -299,7 +299,7 @@ This module is main function module implementing finite state machine
 
 ![](images/fsm_tb.png)
 
-### '.vhd'
+### `.vhd`
 
 This module ...
 
@@ -322,7 +322,7 @@ This module ...
 
 ## TOP module description and simulations
 
-This module is used to implement 'fsm.vhd' onto Arty A7 development board.
+This module is used to implement `fsm.vhd` onto Arty A7 development board.
 
 #### Design module code
 
