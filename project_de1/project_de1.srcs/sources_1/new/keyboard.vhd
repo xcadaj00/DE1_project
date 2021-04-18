@@ -77,9 +77,9 @@ begin
                         if (col_i = "011") then
                             button_o <= "1010"; -- clear
                         elsif (col_i = "101") then
-                            button_o <= "1011"; -- 0
+                            button_o <= "0000"; -- 0
                         elsif (col_i = "110") then
-                            button_o <= "1100"; -- enter
+                            button_o <= "1011"; -- enter
                         else
                             button_o <= "1111";
                             s_row <= row_1;
