@@ -1,8 +1,8 @@
 Vivado Simulator 2020.2
 Time resolution is 1 ps
 Note: Stimulus process started
-Time: 0 ps  Iteration: 0  Process: /tb_keyboard/p_stimulus  File: D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd
+Time: 0 ps  Iteration: 0  Process: /tb_keyboard/p_stimulus  File: C:/Users/uzivatel/Documents/github/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd
 Note: running keyboard tests
-Time: 0 ps  Iteration: 0  Process: /tb_keyboard/p_stimulus  File: D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd
+Time: 0 ps  Iteration: 0  Process: /tb_keyboard/p_stimulus  File: C:/Users/uzivatel/Documents/github/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd
 Note: Stimulus process finished
-Time: 795 ns  Iteration: 0  Process: /tb_keyboard/p_stimulus  File: D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd
+Time: 795 ns  Iteration: 0  Process: /tb_keyboard/p_stimulus  File: C:/Users/uzivatel/Documents/github/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd

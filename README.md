@@ -44,7 +44,26 @@ Used components are connected to Arty A7 board as shield.
 
 #### Connection of button matrix 
 
-| Component | Pin on board | Pin on FPGA |
+| Matrix pin | Pin on board | Pin on FPGA | Comment |
+| :-:  | :-:  | :-: | :-: |
+| COL1 | IO41 | U14 | pullup, used as input for column 1 |
+| COL2 | IO40 | V14 | pullup, used as input for column 1 |
+| COL3 | IO39 | T13 | pullup, used as input for column 1 |
+| ROW1 | IO38 | U12 | when 0, ROW1 buttons can turn COL pins to 0 |
+| ROW2 | IO37 | V12 | when 0, ROW2 buttons can turn COL pins to 0 |
+| ROW3 | IO36 | V10 | when 0, ROW3 buttons can turn COL pins to 0 |
+| ROW4 | IO35 | V11 | when 0, ROW4 buttons can turn COL pins to 0 |
+
+##### Button matrix labels
+
+| :-: | COL1 | COL2 | COL3 |
+| :-:  | :-:  | :-: | :-: |
+| ROW1 | :-: | 1 | 2 | 3 |
+| ROW2 | :-: | 4 | 5 | 6 |
+| ROW3 | :-: | 7 | 8 | 9 |
+| ROW4 | :-: | CLEAR | 0 | ENTER |
+
+<!-- | Component | Pin on board | Pin on FPGA |
 | :-:  | :-:  | :-: |
 | BTN1 | IO38, IO41 | U12, U14 |
 | BTN2 | IO38, IO40 | U12, V14 |
@@ -57,28 +76,28 @@ Used components are connected to Arty A7 board as shield.
 | BTN9 | IO36, IO39 | V10, T13 |
 | BTN10 | IO35, IO41 | V11, U14 |
 | BTN11 | IO35, IO40 | V11, V14 |
-| BTN12 | IO35, IO39 | V11, T13 |
+| BTN12 | IO35, IO39 | V11, T13 | -->
 
 #### Connection of 7-segment displays
 
 ![Screenshot od EDA Playground](images/7segdis.png)
 
-Cathodes
+##### Cathodes
 
 LEDs light up when cathode is low (i.e. 0)
 
 | Component | display Pin | Pin on board | Pin on FPGA |
-|    :-:    |    :-:      |     :-:      |     :-:     |
-| CA | 11 | IO7 | G13 |
-| CB | 2 | IO8 | B11 |
-| CC | 4 | IO10 | A12 |
-| CD | 2 | IO12 | D12 |
-| CE | 1 | IO13 | D13 |
-| CF | 10 | IO34 | B18 |
-| CG | 5 | IO9 | A18 |
-| CDP | 3 | IO11 | K16 |
+|:-: |:-: | :-:  | :-: |
+| A  | 11 | IO7  | G13 |
+| B  | 2  | IO8  | B11 |
+| C  | 4  | IO10 | A12 |
+| D  | 2  | IO12 | D12 |
+| E  | 1  | IO13 | D13 |
+| F  | 10 | IO34 | B18 |
+| G  | 5  | IO9  | A18 |
+| DP | 3  | IO11 | K16 |
 
-Anodes
+##### Anodes
 
 Transistor is open when 0V applied to its base, so digit can light up
 
