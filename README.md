@@ -56,8 +56,8 @@ Used components are connected to Arty A7 board as shield.
 
 ##### Button matrix labels
 
-| :-: | COL1 | COL2 | COL3 |
-| :-:  | :-:  | :-: | :-: |
+| COL1 | COL2 | COL3 |
+| :-:  | :-: | :-: |
 | ROW1 | :-: | 1 | 2 | 3 |
 | ROW2 | :-: | 4 | 5 | 6 |
 | ROW3 | :-: | 7 | 8 | 9 |
