@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Apr 17 16:37:03 2021
+# Process ID: 2240
+# Current directory: D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.sim/sim_1/behav/xsim/xsim.dir/tb_keyboard_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.sim/sim_1/behav/xsim/xsim.dir/tb_keyboard_behav/webtalk/xsim_webtalk.tcl -notrace

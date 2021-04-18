@@ -13,9 +13,9 @@ port(
 end keyboard;
 
 architecture Behavioral of keyboard is
-   
-    signal s_en  : std_logic;
-    signal s_row_o : unsigned(3 downto 0); -- for reading from row_o
+    type   state_type is (row_1, row_2, row_3, row_4);
+    signal s_row	: state_type;    
+    signal en       : std_logic;
 
 begin
     clk_en0 : entity work.clock_enable
@@ -25,72 +25,69 @@ begin
         port map(
             clk     =>  clk,
             reset   =>  reset,
-            ce_o    =>  s_en
+            ce_o    =>  en
         );
 
 	p_keyboard: process(clk)
 	begin
-		if rising_edge(clk) then
-			if reset = '0' then
-                s_row_o <= "0111";
-			elsif s_en = '1' then
-			
-				if (s_row_o = "0111") then
-					if (col_i = "011") then
-						button_o <= "0001"; -- 1
-					elsif (col_i = "101") then
-						button_o <= "0010"; -- 2
-					elsif (col_i = "110") then
-						button_o <= "0011"; -- 3
-					else 
-					   button_o <= "1111";
-					   s_row_o <= "1011";
-					end if;
-					
-				elsif (s_row_o = "1011") then
-					if (col_i = "011") then
-						button_o <= "0100"; -- 4
-					elsif (col_i = "101") then
-						button_o <= "0101"; -- 5
-					elsif (col_i = "110") then
-						button_o <= "0110"; -- 6
-					else 
-					   button_o <= "1111";
-					   s_row_o <= "1101";
-					end if;
-					
-				elsif (s_row_o = "1101") then
-					if (col_i = "011") then
-						button_o <= "0111"; -- 7
-					elsif (col_i = "101") then
-						button_o <= "1000"; -- 8
-					elsif (col_i = "110") then
-						button_o <= "1001"; -- 9
-					else 
-					   button_o <= "1111";
-					   s_row_o <= "1110";
-					end if;
-					
-				elsif (s_row_o = "1110") then
-					if (col_i = "011") then
-						button_o <= "1010"; -- clear
-					elsif (col_i = "101") then
-						button_o <= "1011"; -- 0
-					elsif (col_i = "110") then
-						button_o <= "1100"; -- enter
-					else 
-					   button_o <= "1111";
-					   s_row_o <= "0111";
-					end if;
-					
-				else 
-				    s_row_o <= "0111";
-				end if;
-				
-			end if;
-		end if;	
+        if rising_edge (clk) then
+            if (reset = '1') then
+                s_row <= row_1;
+                row_o <= "1111"; --no key pushed
+            elsif (en = '1') then
+                case s_row is
+                    when row_1 =>
+                        row_o <= "0111";
+                        if (col_i = "011") then
+                            button_o <= "0001"; -- 1
+                        elsif (col_i = "101") then
+                            button_o <= "0010"; -- 2
+                        elsif (col_i = "110") then
+                            button_o <= "0011"; -- 3
+                        else
+                            button_o <= "1111";
+                            s_row <= row_2;
+                        end if;
+                    when row_2 =>
+                        row_o <= "1011";
+                        if (col_i = "011") then
+                            button_o <= "0100"; -- 4
+                        elsif (col_i = "101") then
+                            button_o <= "0101"; -- 5
+                        elsif (col_i = "110") then
+                            button_o <= "0110"; -- 6
+                        else
+                            button_o <= "1111";
+                            s_row <= row_3;
+                        end if;
+                    when row_3 =>
+                        row_o <= "1101";
+                        if (col_i = "011") then
+                            button_o <= "0111"; -- 7
+                        elsif (col_i = "101") then
+                            button_o <= "1000"; -- 8
+                        elsif (col_i = "110") then
+                            button_o <= "1001"; -- 9
+                        else
+                            button_o <= "1111";
+                            s_row <= row_4;
+                        end if;
+                    when row_4 =>
+                        row_o <= "1110";
+                        if (col_i = "011") then
+                            button_o <= "1010"; -- clear
+                        elsif (col_i = "101") then
+                            button_o <= "1011"; -- 0
+                        elsif (col_i = "110") then
+                            button_o <= "1100"; -- enter
+                        else
+                            button_o <= "1111";
+                            s_row <= row_1;
+                        end if;
+                    when others => s_row <= row_1;
+                end case;
+            end if;
+        end if;
 	end process p_keyboard;
-	
-	row_o <= s_row_o;
 	
 end;
