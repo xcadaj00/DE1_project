@@ -82,29 +82,41 @@ begin
         
         s_col <= "111"; wait for 60 ns;
         
-        s_col <= "011"; wait for 50 ns; -- 1
+        s_col <= "011"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "101"; wait for 50 ns; -- 2
+        
+        s_col <= "101"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "110"; wait for 50 ns; -- 3
+        
+        s_col <= "110"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "011"; wait for 50 ns; -- 4
+        
+        s_col <= "011"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "101"; wait for 50 ns; -- 5
+        
+        s_col <= "101"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "110"; wait for 50 ns; -- 6
+        
+        s_col <= "110"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "011"; wait for 50 ns; -- 7
+        
+        s_col <= "011"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "101"; wait for 50 ns; -- 8
+        
+        s_col <= "101"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "110"; wait for 50 ns; -- 9
+        
+        s_col <= "110"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "011"; wait for 50 ns; -- clear
+        
+        s_col <= "011"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "101"; wait for 50 ns; -- 0
+        
+        s_col <= "101"; wait for 50 ns;
         s_col <= "111"; wait for 10 ns;
-        s_col <= "110"; wait for 50 ns; -- enter
+        
+        s_col <= "110"; wait for 50 ns;
+        s_col <= "111"; wait for 10 ns;
         
         report "Stimulus process finished" severity note;
         wait;
