@@ -1,2 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.srcs/sources_1/new/keyboard.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'keyboard'
 INFO: [VRFC 10-163] Analyzing VHDL file "D:/VUT_FEKT/2nd/electronics/DE1/Cp/DE1_project/project_de1/project_de1.srcs/sim_1/new/tb_keyboard.vhd" into library xil_defaultlib
 INFO: [VRFC 10-3107] analyzing entity 'tb_keyboard'

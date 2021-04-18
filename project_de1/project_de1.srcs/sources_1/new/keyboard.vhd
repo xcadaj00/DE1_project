@@ -13,8 +13,8 @@ port(
 end keyboard;
 
 architecture Behavioral of keyboard is
-    type   state_type is (row_1, row_2, row_3, row_4);
-    signal s_row	: state_type;    
+    type   row_type is (row_1, row_2, row_3, row_4);
+    signal s_row	: row_type;    
     signal en       : std_logic;
 
 begin
@@ -89,5 +89,4 @@ begin
             end if;
         end if;
 	end process p_keyboard;
-	
 end;
