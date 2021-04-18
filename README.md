@@ -243,21 +243,21 @@ Transistor is open when 3.3V (i.e. 1) is applied to its base, so SIREN will turn
 
 This module is used to periodically read pressed buttons from 4*3 matrix keyboard into 4bit output as follows: 
 
-| Button | Output |
-| :-:  | :-:  |
-| 0 | `0000` |
-| 1 | `0001` |
-| 2 | `0010` |
-| 3 | `0011` |
-| 4 | `0100` |
-| 5 | `0101` |
-| 6 | `0110` |
-| 7 | `0111` |
-| 8 | `1000` |
-| 9 | `1001` |
-| CLEAR | `1010` |
-| ENTER | `1011` |
-| default | `1111` |
+| Button | Binary output | Hexadecimal output |
+| :-: | :-: | :-: |
+| 0 | `0000` | `0` |
+| 1 | `0001` | `1` |
+| 2 | `0010` | `2` |
+| 3 | `0011` | `3` |
+| 4 | `0100` | `4` |
+| 5 | `0101` | `5` |
+| 6 | `0110` | `6` |
+| 7 | `0111` | `7` |
+| 8 | `1000` | `8` |
+| 9 | `1001` | `9` |
+| CLEAR | `1010` | `a` |
+| ENTER | `1011` | `b` |
+| default | `1111` | `f` |
 
 #### Design module code
 
