@@ -11,8 +11,8 @@
 
 ### Project objectives
 
-Write your text here.
-
+This project goal is to implement door lock system onto board Arty A7-35. It should have 4-digit sevensegment display to show 4-digit PIN and relay to unlock the door. 
+As additional features, we added small siren to produce informational sound when pin is correct and door are opened or when pin is incorrect and a dual color LED to show it visually. 
 
 ## Hardware description
 
