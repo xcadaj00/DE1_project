@@ -281,7 +281,7 @@ This module is main function module implementing finite state machine
 
 #### State diagram
 
-!()[images/statediagram.png]
+![](images/statediagram.png)
 
 #### Design module code
 
