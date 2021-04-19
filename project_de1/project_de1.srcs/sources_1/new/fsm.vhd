@@ -34,13 +34,17 @@ use ieee.numeric_std.all;
 
 entity fsm is
     Port ( 
-        clk     : in  std_logic;
-        reset   : in  std_logic
---        south_i : in  std_logic; -- South sensor
---        west_i  : in  std_logic; -- West sensor
---        -- Traffic lights (RGB LEDs) for two directions
---        south_o : out std_logic_vector(3 - 1 downto 0);
---        west_o  : out std_logic_vector(3 - 1 downto 0)
+        clk        : in  std_logic;
+        reset      : in  std_logic;
+        keyboard_i : in  std_logic_vector (4 - 1 downto 0);
+        disp0_o    : out std_logic_vector (4 - 1 downto 0);
+        disp1_o    : out std_logic_vector (4 - 1 downto 0);
+        disp2_o    : out std_logic_vector (4 - 1 downto 0);
+        disp3_o    : out std_logic_vector (4 - 1 downto 0);
+        disp_en_o  : out std_logic_vector (4 - 1 downto 0);
+        led_o      : out std_logic_vector (2 - 1 downto 0);
+        relay_o    : out std_logic;
+        siren_o    : out std_logic
     );
 end fsm;
 
@@ -64,10 +68,22 @@ architecture Behavioral of fsm is
     signal s_cnt    : unsigned(5 - 1 downto 0);
 
     -- Specific values for local counter
-    constant c_DELAY_2SEC   : unsigned(5 - 1 downto 0) := b"0_1000";
-    constant c_DELAY_5SEC   : unsigned(5 - 1 downto 0) := b"1_0100";
-    constant c_ZERO         : unsigned(5 - 1 downto 0) := b"0_0000";
-
+    constant c_DELAY_2SEC   : unsigned(5 - 1 downto 0)  := b"0_1000";
+    constant c_DELAY_5SEC   : unsigned(5 - 1 downto 0)  := b"1_0100";
+    constant c_ZERO         : unsigned(5 - 1 downto 0)  := b"0_0000";
+    
+    constant c_pin0         : std_logic_vector(4 - 1 downto 0) := "0100"; -- pin is 4321
+    constant c_pin1         : std_logic_vector(4 - 1 downto 0) := "0011";
+    constant c_pin2         : std_logic_vector(4 - 1 downto 0) := "0010";
+    constant c_pin3         : std_logic_vector(4 - 1 downto 0) := "0001";
+    
+    signal   s_pin0         : std_logic_vector(4 - 1 downto 0); -- signals to store typed pin values to compare with the constant
+    signal   s_pin1         : std_logic_vector(4 - 1 downto 0);
+    signal   s_pin2         : std_logic_vector(4 - 1 downto 0);
+    signal   s_pin3         : std_logic_vector(4 - 1 downto 0);
+    
+    signal   s_last         : std_logic_vector(4 - 1 downto 0); -- signal to store last pressed value to prevent long press problem
+    
 begin
 
 --------------------------------------------------------------------
@@ -95,96 +111,155 @@ begin
     p_doorlock_fsm : process(clk)
     begin
         if rising_edge(clk) then
-            if (reset = '1') then       -- Synchronous reset
-                s_state <= S_WAIT ;     -- Set initial state
-                s_cnt   <= c_ZERO;      -- Clear all bits
+            if (reset = '1') then         -- Synchronous reset
+                s_state    <= S_WAIT;     -- Set initial state
+                s_cnt      <= c_ZERO;     -- Clear all bits
+                disp_en_o  <= "0000";     -- which digits on display will be enabled - default no digit
+                disp0_o    <= "0000";     -- init digit 1
+                disp1_o    <= "0000";     -- init digit 2
+                disp2_o    <= "0000";     -- init digit 3
+                disp3_o    <= "0000";     -- init digit 4
+                led_o      <= "00";       -- turn off LED
+                relay_o    <= '0';        -- turn off relay
+                siren_o    <= '0';        -- turn off siren
+                s_last     <= "1111";     -- init state
 
-            elsif (s_en = '1') then
-                -- Every 250 ms, CASE checks the value of the s_state 
-                -- variable and changes to the next state according 
-                -- to the delay value.
---                case s_state is
+            elsif (s_en = '1' and (keyboard_i = "1111" or keyboard_i /= s_last)) then
+                --Every 250 ms, CASE checks the value of the s_state 
+                --variable and changes to the next state according 
+                -- to the delay value, if the button that was pressed previously is not pressed now
+                
+                s_last <= keyboard_i;
+                
+                case s_state is
 
---                    when goS =>
---                        if (s_cnt < c_DELAY_3SEC) then
---                            s_cnt <= s_cnt + 1;
---                        elsif (west_i = '1') then
---                            -- Move to the next state
---                            s_state <= waitS;
---                            -- Reset local counter value
---                            s_cnt   <= c_ZERO;
---                        end if;
+                    when S_WAIT =>
+                        if (keyboard_i /= "1111" and keyboard_i /= "1010" and keyboard_i /= "1011") then
+                            -- First number typed
+                            s_pin0    <= keyboard_i; -- load it into local signal
+                            disp0_o   <= keyboard_i;     -- show that number on the first digit of display
+                            disp_en_o <= "1000";     -- enable that first digit
+                            s_state   <= S_FIRST;    -- go to state S_FIRST
+                        end if;
 
---                    when waitS =>
---                        -- WRITE YOUR CODE HERE
---                        if (s_cnt < c_DELAY_0p5SEC) then
---                            s_cnt <= s_cnt + 1;
---                        else
---                            -- Move to the next state
---                            s_state <= goW;
---                            -- Reset local counter value
---                            s_cnt   <= c_ZERO;
---                        end if;
-                    
---                    when goW =>
---                        if (s_cnt < c_DELAY_3SEC) then
---                            s_cnt <= s_cnt + 1;
---                        elsif (south_i = '1') then
---                            -- Move to the next state
---                            s_state <= waitW;
---                            -- Reset local counter value
---                            s_cnt   <= c_ZERO;
---                        end if;
+                    when S_FIRST =>
+                        if (keyboard_i = "1010") then -- clear was pressed
+                            s_cnt   <= c_ZERO;
+                            s_state <= S_WAIT;
+                        elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
+                            -- Second number typed
+                            s_pin1    <= keyboard_i; -- load it into local signal
+                            disp1_o   <= keyboard_i;     -- show that number on the second digit of display
+                            disp_en_o <= "1100";     -- enable that second digit
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_SECOND;    -- go to state S_SECOND
+                        elsif (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= S_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
                         
---                    when waitW =>
---                        -- WRITE YOUR CODE HERE
---                        if (s_cnt < c_DELAY_0p5SEC) then
---                            s_cnt <= s_cnt + 1;
---                        else
---                            -- Move to the next state
---                            s_state <= goS;
---                            -- Reset local counter value
---                            s_cnt   <= c_ZERO;
---                        end if;
+                    when S_SECOND =>
+                        if (keyboard_i = "1010") then -- clear was pressed
+                            s_cnt   <= c_ZERO;
+                            s_state <= S_WAIT;
+                        elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
+                            -- Third number typed
+                            s_pin2    <= keyboard_i; -- load it into local signal
+                            disp2_o   <= keyboard_i;     -- show that number on the third digit of display
+                            disp_en_o <= "1110";     -- enable that third digit
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_THIRD;    -- go to state S_THIRD
+                        elsif (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= S_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                      
+                      when S_THIRD =>
+                        if (keyboard_i = "1010") then -- clear was pressed
+                            s_cnt   <= c_ZERO;
+                            s_state <= S_WAIT;
+                        elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
+                            -- Forth number typed
+                            s_pin3    <= keyboard_i; -- load it into local signal
+                            disp3_o   <= keyboard_i; -- show that number on the forth digit of display
+                            disp_en_o <= "1111";     -- enable that forth digit
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_FORTH;    -- go to state S_FORTH
+                        elsif (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= S_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
                         
---                    -- It is a good programming practice to use the 
---                    -- OTHERS clause, even if all CASE choices have 
---                    -- been made. 
---                    when others =>
---                        s_state <= goS;
+                      when S_FORTH =>
+                        if (keyboard_i = "1010") then -- clear was pressed
+                            s_cnt   <= c_ZERO;
+                            s_state <= S_WAIT;
+                        elsif (keyboard_i = "1011") then -- enter was pressed
+                            disp_en_o <= "0000";          -- disable display
+                            s_cnt     <= c_ZERO;
+                            if (s_pin0 = c_pin0 and s_pin1 = c_pin1 and s_pin2 = c_pin2 and s_pin3 = c_pin3) then
+                                relay_o   <= '1';    -- open the door
+                                led_o     <= "01";   -- show green light
+                                s_state   <= S_CORRECT;  -- go to state S_CORRECT
+                            else
+                                siren_o   <= '1';    -- turn on siren
+                                led_o     <= "10";   -- show red light
+                                s_state   <= S_WRONG;    -- go to state S_WRONG
+                            end if;
+                        elsif (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            -- Move to the next state
+                            s_state <= S_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                      
+                    when S_CORRECT =>
+                        if (s_cnt < c_DELAY_5SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            relay_o   <= '0';    -- turn off relay
+                            led_o     <= "00";   -- turn off LED
+                            -- Move to the next state
+                            s_state <= S_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                        
+                    when S_WRONG =>
+                        if (s_cnt < c_DELAY_2SEC) then
+                            s_cnt <= s_cnt + 1;
+                        else
+                            siren_o   <= '0';    -- turn off siren
+                            led_o     <= "00";   -- turn off LED
+                            -- Move to the next state
+                            s_state <= S_WAIT;
+                            -- Reset local counter value
+                            s_cnt   <= c_ZERO;
+                        end if;
+                                    
+                    -- It is a good programming practice to use the 
+                    -- OTHERS clause, even if all CASE choices have 
+                    -- been made. 
+                    when others =>
+                        s_state <= S_WAIT;
 
---                end case;
+                end case;
             end if; -- Synchronous reset
         end if; -- Rising edge
     end process p_doorlock_fsm;
-
-    --------------------------------------------------------------------
-    -- p_output_fsm:
-    -- The combinatorial process is sensitive to state changes, and sets
-    -- the output signals accordingly. This is an example of a Moore 
-    -- state machine because the output is set based on the active state.
-    --------------------------------------------------------------------
-    p_output_fsm : process(s_state)
-    begin
---        case s_state is
---            -- WRITE YOUR CODE HERE
---            when goW =>
---                south_o <= "100";  -- Red
---                west_o  <= "010";  -- Green
---            when waitW =>
---                south_o <= "100";  -- Red
---                west_o  <= "110";  -- Yellow
---            when goS =>
---                south_o <= "010";  -- Green
---                west_o  <= "100";  -- Red
---            when waitS =>
---                south_o <= "110";  -- Yellow
---                west_o  <= "100";  -- Red
-
---            when others =>
---                south_o <= "100";  -- Red
---                west_o  <= "100";  -- Red
---        end case;
-    end process p_output_fsm;
 
 end Behavioral;

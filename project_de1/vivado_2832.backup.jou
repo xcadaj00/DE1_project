@@ -2,12 +2,16 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Apr 19 21:09:22 2021
-# Process ID: 12036
+# Start of session at: Sun Apr 18 21:30:33 2021
+# Process ID: 2832
 # Current directory: C:/Users/uzivatel/Documents/github/DE1_project/project_de1
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10632 C:\Users\uzivatel\Documents\github\DE1_project\project_de1\project_de1.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11736 C:\Users\uzivatel\Documents\github\DE1_project\project_de1\project_de1.xpr
 # Log file: C:/Users/uzivatel/Documents/github/DE1_project/project_de1/vivado.log
 # Journal file: C:/Users/uzivatel/Documents/github/DE1_project/project_de1\vivado.jou
 #-----------------------------------------------------------
 start_gui
 open_project C:/Users/uzivatel/Documents/github/DE1_project/project_de1/project_de1.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_keyboard.tcl
+close_sim
