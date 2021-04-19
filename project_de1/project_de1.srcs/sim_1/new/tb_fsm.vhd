@@ -25,7 +25,7 @@ architecture testbench of tb_fsm is
     signal s_disp2      : std_logic_vector(4 - 1 downto 0);
     signal s_disp3      : std_logic_vector(4 - 1 downto 0);
     signal s_disp_en    : std_logic_vector(4 - 1 downto 0);
-    signal s_led        : std_logic_vector (2 - 1 downto 0);
+    signal s_led        : std_logic_vector(2 - 1 downto 0);
     signal s_relay      : std_logic;
     signal s_siren      : std_logic;
 

@@ -505,8 +505,9 @@ begin
 
                     when S_FIRST =>
                         if (keyboard_i = "1010") then -- clear was pressed
-                            s_cnt   <= c_ZERO;
-                            s_state <= S_WAIT;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
                             -- Second number typed
                             s_pin1    <= keyboard_i; -- load it into local signal
@@ -517,16 +518,16 @@ begin
                         elsif (s_cnt < c_DELAY_2SEC) then
                             s_cnt <= s_cnt + 1;
                         else
-                            -- Move to the next state
-                            s_state <= S_WAIT;
-                            -- Reset local counter value
-                            s_cnt   <= c_ZERO;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         end if;
                         
                     when S_SECOND =>
                         if (keyboard_i = "1010") then -- clear was pressed
-                            s_cnt   <= c_ZERO;
-                            s_state <= S_WAIT;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
                             -- Third number typed
                             s_pin2    <= keyboard_i; -- load it into local signal
@@ -537,16 +538,16 @@ begin
                         elsif (s_cnt < c_DELAY_2SEC) then
                             s_cnt <= s_cnt + 1;
                         else
-                            -- Move to the next state
-                            s_state <= S_WAIT;
-                            -- Reset local counter value
-                            s_cnt   <= c_ZERO;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         end if;
                       
                     when S_THIRD =>
                         if (keyboard_i = "1010") then -- clear was pressed
-                            s_cnt   <= c_ZERO;
-                            s_state <= S_WAIT;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
                             -- Forth number typed
                             s_pin3    <= keyboard_i; -- load it into local signal
@@ -557,16 +558,16 @@ begin
                         elsif (s_cnt < c_DELAY_2SEC) then
                             s_cnt <= s_cnt + 1;
                         else
-                            -- Move to the next state
-                            s_state <= S_WAIT;
-                            -- Reset local counter value
-                            s_cnt   <= c_ZERO;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         end if;
                         
                     when S_FORTH =>
                         if (keyboard_i = "1010") then -- clear was pressed
-                            s_cnt   <= c_ZERO;
-                            s_state <= S_WAIT;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         elsif (keyboard_i = "1011") then -- enter was pressed
                             disp_en_o <= "0000";          -- disable display
                             s_cnt     <= c_ZERO;
@@ -582,10 +583,9 @@ begin
                         elsif (s_cnt < c_DELAY_2SEC) then
                             s_cnt <= s_cnt + 1;
                         else
-                            -- Move to the next state
-                            s_state <= S_WAIT;
-                            -- Reset local counter value
-                            s_cnt   <= c_ZERO;
+                            s_cnt     <= c_ZERO;
+                            s_state   <= S_WAIT;
+                            disp_en_o <= "0000";
                         end if;
                       
                     when S_CORRECT =>
@@ -657,7 +657,7 @@ architecture testbench of tb_fsm is
     signal s_disp2      : std_logic_vector(4 - 1 downto 0);
     signal s_disp3      : std_logic_vector(4 - 1 downto 0);
     signal s_disp_en    : std_logic_vector(4 - 1 downto 0);
-    signal s_led        : std_logic_vector (2 - 1 downto 0);
+    signal s_led        : std_logic_vector(2 - 1 downto 0);
     signal s_relay      : std_logic;
     signal s_siren      : std_logic;
 
