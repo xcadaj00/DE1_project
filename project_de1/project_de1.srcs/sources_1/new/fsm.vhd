@@ -182,7 +182,7 @@ begin
                             s_cnt   <= c_ZERO;
                         end if;
                       
-                      when S_THIRD =>
+                    when S_THIRD =>
                         if (keyboard_i = "1010") then -- clear was pressed
                             s_cnt   <= c_ZERO;
                             s_state <= S_WAIT;
@@ -202,7 +202,7 @@ begin
                             s_cnt   <= c_ZERO;
                         end if;
                         
-                      when S_FORTH =>
+                    when S_FORTH =>
                         if (keyboard_i = "1010") then -- clear was pressed
                             s_cnt   <= c_ZERO;
                             s_state <= S_WAIT;
