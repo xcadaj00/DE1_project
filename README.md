@@ -259,7 +259,7 @@ This module is used to periodically read pressed buttons from 4*3 matrix keyboar
 | ENTER | `1011` | `b` |
 | default | `1111` | `f` |
 
-`p_keyboard` process receives a 3-bit vector that indicates a specific column with a value of 0 (011 - first, 101 - second, 110 - third 111 - no input). The process runs through a loop every 10 ns, periodically changing the values of the 4-bit row vector, and sets the output value based on the input vector and the momentary row value.
+`p_keyboard` process receives a 3-bit vector that indicates a specific column with a value of 0 (011 - first, 101 - second, 110 - third, 111 - no input). The process runs through a loop every 10 ns, periodically changing the values of the 4-bit row vector and sets the output value based on the input vector and the momentary row value.
 
 #### Design module code
 
