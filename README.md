@@ -280,7 +280,7 @@ end keyboard;
 
 architecture Behavioral of keyboard is
     type   row_type is (row_1, row_2, row_3, row_4);
-    signal s_row	: row_type;    
+    signal s_row    : row_type;    
     signal en       : std_logic;
 
 begin
@@ -294,13 +294,15 @@ begin
             ce_o    =>  en
         );
 
-	p_keyboard: process(clk)
+    p_keyboard: process(clk)
 	begin
-        if rising_edge (clk) then
+        if (rising_edge (clk)) then
             if (reset = '1') then
                 s_row <= row_1;
-                row_o <= "1111"; --no key pushed
+                row_o <= "1111";
+                button_o <= "1111";
             elsif (en = '1') then
+                button_o <= "1111";
                 case s_row is
                     when row_1 =>
                         row_o <= "0111";
@@ -311,7 +313,6 @@ begin
                         elsif (col_i = "110") then
                             button_o <= "0011"; -- 3
                         else
-                            button_o <= "1111";
                             s_row <= row_2;
                         end if;
                     when row_2 =>
@@ -323,7 +324,6 @@ begin
                         elsif (col_i = "110") then
                             button_o <= "0110"; -- 6
                         else
-                            button_o <= "1111";
                             s_row <= row_3;
                         end if;
                     when row_3 =>
@@ -335,7 +335,6 @@ begin
                         elsif (col_i = "110") then
                             button_o <= "1001"; -- 9
                         else
-                            button_o <= "1111";
                             s_row <= row_4;
                         end if;
                     when row_4 =>
@@ -347,14 +346,13 @@ begin
                         elsif (col_i = "110") then
                             button_o <= "1011"; -- enter
                         else
-                            button_o <= "1111";
                             s_row <= row_1;
                         end if;
                     when others => s_row <= row_1;
                 end case;
             end if;
         end if;
-	end process p_keyboard;
+    end process p_keyboard;
 end;
 ```
 
