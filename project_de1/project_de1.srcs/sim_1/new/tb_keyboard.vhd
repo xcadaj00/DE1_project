@@ -42,9 +42,9 @@ architecture testbench of tb_keyboard is
     --Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
-    signal s_col		: unsigned(2 downto 0);
-	signal s_row		: unsigned(3 downto 0);
-	signal s_button     : unsigned(3 downto 0);	
+    signal s_col	: unsigned(2 downto 0);
+    signal s_row	: unsigned(3 downto 0);
+    signal s_button     : unsigned(3 downto 0);	
 begin
     uut_keyboard : entity work.keyboard
         port map(
@@ -69,54 +69,64 @@ begin
         wait;
     end process p_clk_gen;
     
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
     p_stimulus : process
     begin
         report "Stimulus process started" severity note;
         report "running keyboard tests" severity note;
         
-        s_reset <= '0';
-        wait until rising_edge(s_clk_100MHz);
-        s_reset <= '1';
-        wait until rising_edge(s_clk_100MHz);
-        s_reset <= '0'; 
+        s_reset <= '0'; wait for 10 ns;
+        s_reset <= '1'; wait for 10 ns;
+        assert(s_button = "1111") report "Test failed for (RESET)" severity error;
         
-        s_col <= "111"; wait for 60 ns;
+        s_reset <= '0'; wait for 15 ns;
         
-        s_col <= "011"; wait for 50 ns;
+        s_col <= "111"; wait for 40 ns;
+        assert(s_button = "1111") report "Test failed for (NO INPUT)" severity error;
+        
+        s_col <= "011"; wait for 40 ns;
+        assert(s_button = "0001") report "Test failed for (1)" severity error;
+        
+        s_col <= "101"; wait for 40 ns;
+        assert(s_button = "0010") report "Test failed for (2)" severity error;
+        
+        s_col <= "110"; wait for 40 ns;
+        assert(s_button = "0011") report "Test failed for (3)" severity error;
+        
         s_col <= "111"; wait for 10 ns;
         
-        s_col <= "101"; wait for 50 ns;
+        s_col <= "011"; wait for 20 ns;
+        assert(s_button = "0100") report "Test failed for (4)" severity error;
+        
+        s_col <= "101"; wait for 20 ns;
+        assert(s_button = "0101") report "Test failed for (5)" severity error;
+        
+        s_col <= "110"; wait for 20 ns;
+        assert(s_button = "0110") report "Test failed for (6)" severity error;
+        
         s_col <= "111"; wait for 10 ns;
         
-        s_col <= "110"; wait for 50 ns;
+        s_col <= "011"; wait for 30 ns;
+        assert(s_button = "0111") report "Test failed for (7)" severity error;
+        
+        s_col <= "101"; wait for 30 ns;
+        assert(s_button = "1000") report "Test failed for (8)" severity error;
+        
+        s_col <= "110"; wait for 30 ns;
+        assert(s_button = "1001") report "Test failed for (9)" severity error;
+        
         s_col <= "111"; wait for 10 ns;
         
-        s_col <= "011"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
+        s_col <= "011"; wait for 40 ns;
+        assert(s_button = "1010") report "Test failed for (CLEAR)" severity error;
         
-        s_col <= "101"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
+        s_col <= "101"; wait for 40 ns;
+        assert(s_button = "0000") report "Test failed for (0)" severity error;
         
-        s_col <= "110"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
-        
-        s_col <= "011"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
-        
-        s_col <= "101"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
-        
-        s_col <= "110"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
-        
-        s_col <= "011"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
-        
-        s_col <= "101"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
-        
-        s_col <= "110"; wait for 50 ns;
-        s_col <= "111"; wait for 10 ns;
+        s_col <= "110"; wait for 40 ns;
+        assert(s_button = "1011") report "Test failed for (ENTER)" severity error;
         
         report "Stimulus process finished" severity note;
         wait;
