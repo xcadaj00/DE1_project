@@ -46,13 +46,13 @@ Used components are connected to Arty A7 board as shield.
 
 | Matrix pin | Pin on board | Pin on FPGA | Comment |
 | :-:  | :-:  | :-: | :-: |
-| COL1 | IO41 | U14 | pullup, used as input for column 1 |
-| COL2 | IO40 | V14 | pullup, used as input for column 1 |
-| COL3 | IO39 | T13 | pullup, used as input for column 1 |
-| ROW1 | IO38 | U12 | when 0, ROW1 buttons can turn COL pins to 0 |
-| ROW2 | IO37 | V12 | when 0, ROW2 buttons can turn COL pins to 0 |
-| ROW3 | IO36 | V10 | when 0, ROW3 buttons can turn COL pins to 0 |
-| ROW4 | IO35 | V11 | when 0, ROW4 buttons can turn COL pins to 0 |
+| COL1 | IO41 | N17 | pullup, used as input for column 1 |
+| COL2 | IO40 | P18 | pullup, used as input for column 1 |
+| COL3 | IO39 | R18 | pullup, used as input for column 1 |
+| ROW1 | IO38 | T18 | when 0, ROW1 buttons can turn COL pins to 0 |
+| ROW2 | IO37 | U17 | when 0, ROW2 buttons can turn COL pins to 0 |
+| ROW3 | IO36 | N14 | when 0, ROW3 buttons can turn COL pins to 0 |
+| ROW4 | IO35 | N16 | when 0, ROW4 buttons can turn COL pins to 0 |
 
 ##### Button matrix labels
 
