@@ -88,12 +88,12 @@ LEDs light up when cathode is low (i.e. 0)
 
 | Component | display Pin | Pin on board | Pin on FPGA |
 |:-: |:-: | :-:  | :-: |
-| A  | 11 | IO7  | G13 |
+| A  | 11 | IO7  | T16 |
 | B  | 2  | IO8  | N15 |
 | C  | 4  | IO10 | V17 |
 | D  | 2  | IO12 | R17 |
 | E  | 1  | IO13 | P17 |
-| F  | 10 | IO34 | B18 |
+| F  | 10 | IO34 | R16 |
 | G  | 5  | IO9  | M16 |
 | DP | 3  | IO11 | U18 |
 
