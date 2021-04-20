@@ -469,7 +469,7 @@ end testbench;
 
 #### Simulation output
 
-![](images/keyboard_tb.png)
+![](images/keyboard_sim.jpg)
 
 ### `fsm.vhd`
 
