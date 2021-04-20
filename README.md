@@ -89,13 +89,13 @@ LEDs light up when cathode is low (i.e. 0)
 | Component | display Pin | Pin on board | Pin on FPGA |
 |:-: |:-: | :-:  | :-: |
 | A  | 11 | IO7  | G13 |
-| B  | 2  | IO8  | B11 |
-| C  | 4  | IO10 | A12 |
-| D  | 2  | IO12 | D12 |
-| E  | 1  | IO13 | D13 |
+| B  | 2  | IO8  | N15 |
+| C  | 4  | IO10 | V17 |
+| D  | 2  | IO12 | R17 |
+| E  | 1  | IO13 | P17 |
 | F  | 10 | IO34 | B18 |
-| G  | 5  | IO9  | A18 |
-| DP | 3  | IO11 | K16 |
+| G  | 5  | IO9  | M16 |
+| DP | 3  | IO11 | U18 |
 
 ##### Anodes
 
@@ -103,10 +103,10 @@ Transistor is open when 0V applied to its base, so digit can light up
 
 | Component | display Pin | Pin on board | Pin on FPGA |
 |    :-:    |    :-:      |     :-:      |     :-:     |
-| A1 | 12 | IO6 | E15 |
-| A2 | 9 | IO33 | E16 |
-| A3 | 8 | IO32 | D15 |
-| A4 | 6 | IO5 | C15 |
+| A1 | 12 | IO6 | T15 |
+| A2 | 9 | IO33 | P15 |
+| A3 | 8 | IO32 | R15 |
+| A4 | 6 | IO5 | T14 |
 
 #### Connection of Relay
 
@@ -114,7 +114,7 @@ Relay contacts will switch when 3.3V (i.e. 1) is applied to the base of transiso
 
 | Pin on board | Pin on FPGA |
 |    :-:    |     :-:    |
-| IO31 | K15 |
+| IO31 | R13 |
 
 #### Connection of LED 
 
@@ -122,8 +122,8 @@ LEDs light up when anode is high (i.e. 1)
 
 | Component | Pin on board | Pin on FPGA |
 |    :-:    |    :-:     |     :-:     | 
-| Green LED | IO3 | J18 |
-| Red LED | IO30 | J17 |
+| Green LED | IO3 | T11 |
+| Red LED | IO30 | R11 |
 
 #### Connection of Siren
 
@@ -131,7 +131,7 @@ Transistor is open when 3.3V (i.e. 1) is applied to its base, so SIREN will turn
 
 | Pin on board | Pin on FPGA |
 |    :-:    |     :-:    |
-| IO4 | J15 | 
+| IO4 | R12 | 
 
 
 ### Tables of components
