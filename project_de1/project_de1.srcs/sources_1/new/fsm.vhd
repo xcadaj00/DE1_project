@@ -16,11 +16,10 @@ entity fsm is
         clk        : in  std_logic;
         reset      : in  std_logic;
         keyboard_i : in  std_logic_vector (4 - 1 downto 0);
-        disp0_o    : out std_logic_vector (4 - 1 downto 0);
-        disp1_o    : out std_logic_vector (4 - 1 downto 0);
-        disp2_o    : out std_logic_vector (4 - 1 downto 0);
-        disp3_o    : out std_logic_vector (4 - 1 downto 0);
-        disp_en_o  : out std_logic_vector (4 - 1 downto 0);
+        data0_o    : out std_logic_vector (4 - 1 downto 0);
+        data1_o    : out std_logic_vector (4 - 1 downto 0);
+        data2_o    : out std_logic_vector (4 - 1 downto 0);
+        data3_o    : out std_logic_vector (4 - 1 downto 0);
         led_o      : out std_logic_vector (2 - 1 downto 0);
         relay_o    : out std_logic;
         siren_o    : out std_logic
@@ -51,17 +50,19 @@ architecture Behavioral of fsm is
     constant c_DELAY_5SEC   : unsigned(5 - 1 downto 0)  := b"1_0100";
     constant c_ZERO         : unsigned(5 - 1 downto 0)  := b"0_0000";
     
-    constant c_pin0         : std_logic_vector(4 - 1 downto 0) := "0100"; -- pin is 4321
+    -- Hardcoded PIN 4321
+    constant c_pin0         : std_logic_vector(4 - 1 downto 0) := "0100"; 
     constant c_pin1         : std_logic_vector(4 - 1 downto 0) := "0011";
     constant c_pin2         : std_logic_vector(4 - 1 downto 0) := "0010";
     constant c_pin3         : std_logic_vector(4 - 1 downto 0) := "0001";
     
-    signal   s_pin0         : std_logic_vector(4 - 1 downto 0); -- signals to store typed pin values to compare with the constant
+    -- signals to store typed pin values to compare with the constant
+    signal   s_pin0         : std_logic_vector(4 - 1 downto 0); 
     signal   s_pin1         : std_logic_vector(4 - 1 downto 0);
     signal   s_pin2         : std_logic_vector(4 - 1 downto 0);
     signal   s_pin3         : std_logic_vector(4 - 1 downto 0);
     
-    signal   s_last         : std_logic_vector(4 - 1 downto 0); -- signal to store last pressed value to prevent long press problem
+    signal   s_last         : std_logic_vector(4 - 1 downto 0); -- internal signal to store last pressed value to prevent long press problem
     
 begin
 
@@ -71,16 +72,16 @@ begin
     -- signal is 100 MHz.
     
     -- JUST FOR SHORTER/FASTER SIMULATION
-    s_en <= '1';
---    clk_en0 : entity work.clock_enable
---        generic map(
---            g_MAX =>        -- g_MAX = 250 ms / (1/100 MHz)
---        )
---        port map(
---            clk   => clk,
---            reset => reset,
---            ce_o  => s_en
---        );
+    -- s_en <= '1';
+    clk_en0 : entity work.clock_enable
+        generic map(
+            g_MAX => 25 -- correctly 25000000, for faster simulation 25  -- g_MAX = 250 ms / (1/100 MHz)
+        )
+        port map(
+            clk   => clk,
+            reset => reset,
+            ce_o  => s_en
+        );
 
     --------------------------------------------------------------------
     -- p_doorlock_fsm:
@@ -93,14 +94,16 @@ begin
             if (reset = '1') then         -- Synchronous reset
                 s_state    <= S_WAIT;     -- Set initial state
                 s_cnt      <= c_ZERO;     -- Clear all bits
-                disp_en_o  <= "0000";     -- which digits on display will be enabled - default no digit
-                disp0_o    <= "0000";     -- init digit 1
-                disp1_o    <= "0000";     -- init digit 2
-                disp2_o    <= "0000";     -- init digit 3
-                disp3_o    <= "0000";     -- init digit 4
-                led_o      <= "00";       -- turn off LED
+                
+                data3_o    <= "1111";     -- init digit 3 to blank
+                data2_o    <= "1111";     -- init digit 2 to blank
+                data1_o    <= "1111";     -- init digit 1 to blank
+                data0_o    <= "1111";     -- init digit 0 to blank
+                
+                led_o      <= "00";       -- turn off dualcolor LED
                 relay_o    <= '0';        -- turn off relay
                 siren_o    <= '0';        -- turn off siren
+                
                 s_last     <= "1111";     -- init state
 
             elsif (s_en = '1' and (keyboard_i = "1111" or keyboard_i /= s_last)) then
@@ -116,8 +119,7 @@ begin
                         if (keyboard_i /= "1111" and keyboard_i /= "1010" and keyboard_i /= "1011") then
                             -- First number typed
                             s_pin0    <= keyboard_i; -- load it into local signal
-                            disp0_o   <= keyboard_i;     -- show that number on the first digit of display
-                            disp_en_o <= "1000";     -- enable that first digit
+                            data3_o   <= keyboard_i; -- show that number on the first digit of display
                             s_state   <= S_FIRST;    -- go to state S_FIRST
                         end if;
 
@@ -125,52 +127,53 @@ begin
                         if (keyboard_i = "1010") then -- clear was pressed
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o   <= "1111";      -- init digit 3 to blank                   
                         elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
                             -- Second number typed
                             s_pin1    <= keyboard_i; -- load it into local signal
-                            disp1_o   <= keyboard_i;     -- show that number on the second digit of display
-                            disp_en_o <= "1100";     -- enable that second digit
-                            s_cnt     <= c_ZERO;
-                            s_state   <= S_SECOND;    -- go to state S_SECOND
+                            data2_o   <= keyboard_i; -- show that number on the second digit of display
+                            s_cnt     <= c_ZERO;     -- clear counter bits
+                            s_state   <= S_SECOND;   -- go to state S_SECOND
                         elsif (s_cnt < c_DELAY_2SEC) then
                             s_cnt <= s_cnt + 1;
-                        else
+                        else -- 2 sec delay is over
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o   <= "1111";     -- init digit 3 to blank
                         end if;
                         
                     when S_SECOND =>
                         if (keyboard_i = "1010") then -- clear was pressed
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o   <= "1111";     -- init digit 3 to blank
+                            data2_o   <= "1111";     -- init digit 2 to blank
                         elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
                             -- Third number typed
                             s_pin2    <= keyboard_i; -- load it into local signal
-                            disp2_o   <= keyboard_i;     -- show that number on the third digit of display
-                            disp_en_o <= "1110";     -- enable that third digit
+                            data1_o   <= keyboard_i; -- show that number on the third digit of display
                             s_cnt     <= c_ZERO;
                             s_state   <= S_THIRD;    -- go to state S_THIRD
                         elsif (s_cnt < c_DELAY_2SEC) then
                             s_cnt <= s_cnt + 1;
                         else
-                            s_cnt     <= c_ZERO;
-                            s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            s_cnt      <= c_ZERO;
+                            s_state    <= S_WAIT;
+                            data3_o    <= "1111";     -- init digit 3 to blank
+                            data2_o    <= "1111";     -- init digit 2 to blank
                         end if;
                       
                     when S_THIRD =>
                         if (keyboard_i = "1010") then -- clear was pressed
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o    <= "1111";     -- init digit 3 to blank
+                            data2_o    <= "1111";     -- init digit 2 to blank
+                            data1_o    <= "1111";     -- init digit 1 to blank
                         elsif (keyboard_i /= "1111" and keyboard_i /= "1011") then
                             -- Forth number typed
                             s_pin3    <= keyboard_i; -- load it into local signal
-                            disp3_o   <= keyboard_i; -- show that number on the forth digit of display
-                            disp_en_o <= "1111";     -- enable that forth digit
+                            data0_o   <= keyboard_i; -- show that number on the forth digit of display
                             s_cnt     <= c_ZERO;
                             s_state   <= S_FORTH;    -- go to state S_FORTH
                         elsif (s_cnt < c_DELAY_2SEC) then
@@ -178,22 +181,32 @@ begin
                         else
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o    <= "1111";     -- init digit 3 to blank
+                            data2_o    <= "1111";     -- init digit 2 to blank
+                            data1_o    <= "1111";     -- init digit 1 to blank
                         end if;
                         
                     when S_FORTH =>
                         if (keyboard_i = "1010") then -- clear was pressed
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o   <= "1111";     -- init digit 3 to blank
+                            data2_o   <= "1111";     -- init digit 2 to blank
+                            data1_o   <= "1111";     -- init digit 1 to blank
+                            data0_o   <= "1111";     -- init digit 0 to blank
                         elsif (keyboard_i = "1011") then -- enter was pressed
-                            disp_en_o <= "0000";          -- disable display
+                            data3_o   <= "1111";     -- init digit 3 to blank
+                            data2_o   <= "1111";     -- init digit 2 to blank
+                            data1_o   <= "1111";     -- init digit 1 to blank
+                            data0_o   <= "1111";     -- init digit 0 to blank
                             s_cnt     <= c_ZERO;
-                            if (s_pin0 = c_pin0 and s_pin1 = c_pin1 and s_pin2 = c_pin2 and s_pin3 = c_pin3) then
+                            if (s_pin0 = c_pin0 and s_pin1 = c_pin1 and s_pin2 = c_pin2 and s_pin3 = c_pin3) then 
+                                -- pin correct
                                 relay_o   <= '1';    -- open the door
                                 led_o     <= "01";   -- show green light
                                 s_state   <= S_CORRECT;  -- go to state S_CORRECT
                             else
+                                -- pin incorrect
                                 siren_o   <= '1';    -- turn on siren
                                 led_o     <= "10";   -- show red light
                                 s_state   <= S_WRONG;    -- go to state S_WRONG
@@ -203,7 +216,10 @@ begin
                         else
                             s_cnt     <= c_ZERO;
                             s_state   <= S_WAIT;
-                            disp_en_o <= "0000";
+                            data3_o   <= "1111";     -- init digit 3 to blank
+                            data2_o   <= "1111";     -- init digit 2 to blank
+                            data1_o   <= "1111";     -- init digit 1 to blank
+                            data0_o   <= "1111";     -- init digit 0 to blank
                         end if;
                       
                     when S_CORRECT =>

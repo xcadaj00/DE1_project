@@ -77,7 +77,7 @@ begin
             data3_i(1) => SW(13),
             data3_i(0) => SW(12),
             
-            dp_i => "0111",
+            dp_i => "1111",
             dp_o => jb(10),
             
             seg_o(6) => ja(1), -- Cat_A

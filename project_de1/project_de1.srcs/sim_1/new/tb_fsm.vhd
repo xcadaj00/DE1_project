@@ -20,11 +20,10 @@ architecture testbench of tb_fsm is
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
     signal s_keyboard   : std_logic_vector(4 - 1 downto 0);
-    signal s_disp0      : std_logic_vector(4 - 1 downto 0);
     signal s_disp1      : std_logic_vector(4 - 1 downto 0);
     signal s_disp2      : std_logic_vector(4 - 1 downto 0);
     signal s_disp3      : std_logic_vector(4 - 1 downto 0);
-    signal s_disp_en    : std_logic_vector(4 - 1 downto 0);
+    signal s_disp4      : std_logic_vector(4 - 1 downto 0);
     signal s_led        : std_logic_vector(2 - 1 downto 0);
     signal s_relay      : std_logic;
     signal s_siren      : std_logic;
@@ -36,11 +35,10 @@ begin
             clk        => s_clk_100MHz,
             reset      => s_reset,
             keyboard_i => s_keyboard, 
-            disp0_o    => s_disp0,
-            disp1_o    => s_disp1, 
-            disp2_o    => s_disp2, 
-            disp3_o    => s_disp3, 
-            disp_en_o  => s_disp_en,
+            data3_o    => s_disp1,
+            data2_o    => s_disp2, 
+            data1_o    => s_disp3, 
+            data0_o    => s_disp4,
             led_o      => s_led,    
             relay_o    => s_relay,  
             siren_o    => s_siren
@@ -52,7 +50,7 @@ begin
     --------------------------------------------------------------------
     p_clk_gen : process
     begin
-        while now < 10000 ns loop   -- 10 usec of simulation
+        while now < 60 us loop   -- 10 usec of simulation
             s_clk_100MHz <= '0';
             wait for c_CLK_100MHZ_PERIOD / 2;
             s_clk_100MHz <= '1';
@@ -66,9 +64,9 @@ begin
     --------------------------------------------------------------------
     p_reset_gen : process
     begin
-        s_reset <= '0'; wait for 200 ns;
+        s_reset <= '0'; wait for 1 us;
         -- Reset activated
-        s_reset <= '1'; wait for 300 ns;
+        s_reset <= '1'; wait for 1 us;
         -- Reset deactivated
         s_reset <= '0';
         wait;
@@ -81,74 +79,73 @@ begin
     begin
         -- try bad pin
         s_keyboard <= "1111";
-        wait for 600 ns;
+        wait for 3 us;
         s_keyboard <= "0000";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0001";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0010";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0011";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "1011";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 150 ns;
+        wait for 3 us;
         
         -- try timeout
-        
         s_keyboard <= "0000";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0001";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 150 ns;
+        wait for 3 us;
         
         -- try clear
         s_keyboard <= "0000";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0001";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "1010";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 150 ns;
+        wait for 1 us;
         
         -- try correct pin
         s_keyboard <= "0100";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0011";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0010";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "0001";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 50 ns;
+        wait for 1 us;
         s_keyboard <= "1011";
-        wait for 10 ns;
+        wait for 0.5 us;
         s_keyboard <= "1111";
-        wait for 150 ns;
+        wait for 3 us;
 
         wait;
     end process p_stimulus;

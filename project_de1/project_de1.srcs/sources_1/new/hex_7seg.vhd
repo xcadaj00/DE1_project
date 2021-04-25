@@ -82,7 +82,7 @@ begin
             when "1110" =>
                 seg_o <= "0110000";     -- E
             when others =>
-                seg_o <= "0111000";     -- F
+                seg_o <= "1111111";     -- F = blank
         end case;
     end process p_7seg_decoder;
 
