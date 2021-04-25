@@ -1,27 +1,6 @@
-----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
--- 
--- Create Date: 04/17/2021 03:52:26 PM
--- Design Name: 
--- Module Name: tb_keyboard - Behavioral
--- Project Name: 
--- Target Devices: 
--- Tool Versions: 
--- Description: 
--- 
--- Dependencies: 
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
--- 
-----------------------------------------------------------------------------------
-
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use ieee.numeric_std.all;
+--use ieee.numeric_std.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -42,9 +21,9 @@ architecture testbench of tb_keyboard is
     --Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
-    signal s_col	: unsigned(2 downto 0);
-    signal s_row	: unsigned(3 downto 0);
-    signal s_button     : unsigned(3 downto 0);	
+    signal s_col	    : std_logic_vector(2 downto 0);
+    signal s_row	    : std_logic_vector(3 downto 0);
+    signal s_button     : std_logic_vector(3 downto 0);	
 begin
     uut_keyboard : entity work.keyboard
         port map(

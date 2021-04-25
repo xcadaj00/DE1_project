@@ -1,14 +1,14 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+--use ieee.numeric_std.all;
 
 entity keyboard is 
 port(
-    clk		:   in  std_logic;
-    reset	:   in  std_logic;
-    col_i	:   in  unsigned(2 downto 0);
-    row_o	:   out unsigned(3 downto 0);	
-    button_o	:   out unsigned(3 downto 0)
+    clk		    :   in  std_logic;
+    reset    	:   in  std_logic;
+    col_i	    :   in  std_logic_vector(2 downto 0);
+    row_o	    :   out std_logic_vector(3 downto 0);	
+    button_o	:   out std_logic_vector(3 downto 0)
 );
 end keyboard;
 

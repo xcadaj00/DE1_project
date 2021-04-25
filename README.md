@@ -266,15 +266,15 @@ This module is used to periodically read pressed buttons from 4*3 matrix keyboar
 ```vhdl
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+--use ieee.numeric_std.all;
 
 entity keyboard is 
 port(
-    clk		:   in  std_logic;
-    reset	:   in  std_logic;
-    col_i	:   in  unsigned(2 downto 0);
-    row_o	:   out unsigned(3 downto 0);	
-    button_o	:   out unsigned(3 downto 0)
+    clk		    :   in  std_logic;
+    reset	    :   in  std_logic;
+    col_i	    :   in  std_logic_vector(2 downto 0);
+    row_o	    :   out std_logic_vector(3 downto 0);	
+    button_o	:   out std_logic_vector(3 downto 0)
 );
 end keyboard;
 
@@ -361,7 +361,7 @@ end;
 ```vhdl
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use ieee.numeric_std.all;
+--use ieee.numeric_std.all;
 
 entity tb_keyboard is
 --  Port ( );
@@ -373,16 +373,16 @@ architecture testbench of tb_keyboard is
     --Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
-    signal s_col	: unsigned(2 downto 0);
-    signal s_row	: unsigned(3 downto 0);
-    signal s_button 	: unsigned(3 downto 0);	
+    signal s_col	    : std_logic_vector(2 downto 0);
+    signal s_row	    : std_logic_vector(3 downto 0);
+    signal s_button 	: std_logic_vector(3 downto 0);	
 begin
     uut_keyboard : entity work.keyboard
         port map(
-            clk     => s_clk_100MHz,
-            reset   => s_reset,
-            col_i   => s_col,
-            row_o   => s_row,
+            clk      => s_clk_100MHz,
+            reset    => s_reset,
+            col_i    => s_col,
+            row_o    => s_row,
             button_o => s_button 
         );
 
