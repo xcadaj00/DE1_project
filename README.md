@@ -271,10 +271,10 @@ use ieee.std_logic_1164.all;
 
 entity keyboard is 
 port(
-    clk		    :   in  std_logic;
+    clk		:   in  std_logic;
     reset    	:   in  std_logic;
-    col_i	    :   in  std_logic_vector(2 downto 0);
-    row_o	    :   out std_logic_vector(3 downto 0);	
+    col_i	:   in  std_logic_vector(2 downto 0);
+    row_o	:   out std_logic_vector(3 downto 0);	
     button_o	:   out std_logic_vector(3 downto 0)
 );
 end keyboard;
@@ -375,8 +375,8 @@ architecture testbench of tb_keyboard is
     --Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
-    signal s_col	    : std_logic_vector(2 downto 0);
-    signal s_row	    : std_logic_vector(3 downto 0);
+    signal s_col	: std_logic_vector(2 downto 0);
+    signal s_row	: std_logic_vector(3 downto 0);
     signal s_button 	: std_logic_vector(3 downto 0);	
 begin
     uut_keyboard : entity work.keyboard
