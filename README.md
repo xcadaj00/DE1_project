@@ -1015,7 +1015,7 @@ fsm : entity work.fsm
     
 keyboard : entity work.keyboard
     port map(
-        clk		  => CLK100MHZ, 
+        clk	  => CLK100MHZ, 
         reset     => BTN0,
         col_i(0)  => IO41,
         col_i(1)  => IO40,
