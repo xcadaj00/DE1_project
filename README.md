@@ -1,4 +1,4 @@
-# DE1 project 2: Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digi t 7-segment display, relay for door lock control
+# DE1 project 2: Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digit 7-segment display, relay for door lock control
 
 ### Team members
 
