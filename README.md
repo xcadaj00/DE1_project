@@ -1,4 +1,4 @@
-# DE1 project 2: Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digit 7-segment display, relay for door lock control
+# DE1 project 2: Door lock system with PIN (4-digit) terminal, 4x3 push buttons, 4-digi t 7-segment display, relay for door lock control
 
 ### Team members
 
@@ -11,8 +11,8 @@
 
 ### Project objectives
 
-This project goal is to implement door lock system onto board Arty A7-35. It should have 4-digit sevensegment display to show 4-digit PIN and relay to unlock the door. 
-As additional features, we added small siren to produce informational sound when pin is correct and door are opened or when pin is incorrect and a dual color LED to show it visually. 
+Project goal is to implement door lock system onto board Arty A7-35T. It should have 4-digit sevensegment display to show 4-digit PIN and relay to unlock the door. 
+As additional features, we decided to add small siren to produce sound when pin is incorrect and a dual color LED to light green when pin is correct or light red when pin is incorrect.
 
 ## Hardware description
 
@@ -1063,6 +1063,8 @@ end Behavioral;
 ## Video
 
 *Write your text here*
+
+## Conclusion
 
 
 ## References
