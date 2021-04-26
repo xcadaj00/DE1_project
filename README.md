@@ -63,21 +63,6 @@ Used components are connected to Arty A7 board as shield.
 | ROW3 | 7 | 8 | 9 |
 | ROW4 | CLEAR | 0 | ENTER |
 
-<!-- | Component | Pin on board | Pin on FPGA |
-| :-:  | :-:  | :-: |
-| BTN1 | IO38, IO41 | U12, U14 |
-| BTN2 | IO38, IO40 | U12, V14 |
-| BTN3 | IO38, IO39 | U12, T13 |
-| BTN4 | IO37, IO41 | V12, U14 |
-| BTN5 | IO37, IO40 | V12, V14 |
-| BTN6 | IO37, IO39 | V12, T13 |
-| BTN7 | IO36, IO41 | V10, U14 |
-| BTN8 | IO36, IO40 | V10, V14 |
-| BTN9 | IO36, IO39 | V10, T13 |
-| BTN10 | IO35, IO41 | V11, U14 |
-| BTN11 | IO35, IO40 | V11, V14 |
-| BTN12 | IO35, IO39 | V11, T13 | -->
-
 #### Connection of 7-segment displays
 
 ![Screenshot od EDA Playground](images/7segdis.png)
@@ -261,6 +246,11 @@ This module is used to periodically read pressed buttons from 4*3 matrix keyboar
 
 `p_keyboard` process receives a 3-bit vector that indicates a specific column with a value of 0 (011 - first, 101 - second, 110 - third, 111 - no input). The process runs through a loop every 100 ms (10 ns for faster simulation), periodically changing the values of the 4-bit row vector and sets the output value based on the input vector and the momentary row value.
 `clock_enable` module from Labs is used here. 
+For simulation, it is speeded up by 10000000 by `g_MAX` value set to 1 instead of 10000000 in `clock_enable` module, so 100 ns in simulation is like 1 sec in real implementation. 
+
+#### Schematic
+
+![](images/)
 
 #### Design module code
 
@@ -271,11 +261,11 @@ use ieee.std_logic_1164.all;
 
 entity keyboard is 
 port(
-    clk		:   in  std_logic;
-    reset    	:   in  std_logic;
-    col_i	:   in  std_logic_vector(2 downto 0);
-    row_o	:   out std_logic_vector(3 downto 0);	
-    button_o	:   out std_logic_vector(3 downto 0)
+    clk      :   in  std_logic;
+    reset    :   in  std_logic;
+    col_i    :   in  std_logic_vector(2 downto 0);
+    row_o    :   out std_logic_vector(3 downto 0);  
+    button_o :   out std_logic_vector(3 downto 0)
 );
 end keyboard;
 
@@ -296,7 +286,7 @@ begin
         );
 
     p_keyboard: process(clk)
-	begin
+    begin
         if (rising_edge (clk)) then
             if (reset = '1') then
                 s_row <= row_1;
@@ -375,9 +365,9 @@ architecture testbench of tb_keyboard is
     --Local signals
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
-    signal s_col	: std_logic_vector(2 downto 0);
-    signal s_row	: std_logic_vector(3 downto 0);
-    signal s_button 	: std_logic_vector(3 downto 0);	
+    signal s_col        : std_logic_vector(2 downto 0);
+    signal s_row        : std_logic_vector(3 downto 0);
+    signal s_button     : std_logic_vector(3 downto 0); 
 begin
     uut_keyboard : entity work.keyboard
         port map(
@@ -478,11 +468,15 @@ This module has 4bit input, where keyboard can be connected.
 It has also outputs for display (4bit value for each digit, "1111" (i.e. hex 'F') means blank), relay and dualcolor LED (2bit anode value) and siren. 
 PIN "4321" is hardcoded as constant in this module. 
 `clock_enable` module from Labs is used here. 
-
+For simulation, it is speeded up by 1000000 by `g_MAX` value set to 25 instead of 25000000 in `clock_enable` module, so 1 us in simulation is like 1 sec in real implementation. 
 
 #### State diagram
 
 ![](images/statediagram.png)
+
+#### Schematic
+
+![](images/)
 
 #### Design module code
 
@@ -931,9 +925,16 @@ end architecture testbench;
 
 This module is used to implement all modules onto Arty A7-35T development board. 
 Module `driver_7seg_4digits` from Labs is used here with small change, F cathode value in `hex_7seg` module is set to "1111111" as blank digit. 
-There are also modules `clock_enable`, `cnt_up_down` inside this driver module. 
+There are also modules `clock_enable`, `cnt_up_down` from Labs inside this driver module. 
+For top module simulation, I speeded up the simulation by 100000 (`g_MAX` values in `clock_enable` modules in all used modules are divided by 100000), so 10 us in simulation is like 1 second in reality. 
+I also removed `keyboard` module to simplify the simulation, because simulating matrix keyboard pushes could be a bit confusing and all button pushes were already simulated in keyboard testbench and there is no additional logic around it in the top module. 
+Project copy used for this simulation is [here](https://github.com/xcadaj00/DE1_project/DE1_project_top_simulation), top module design code edited for simulation is listed here underneath the real implementation code. 
 
-#### Design module code
+#### Schematic
+
+![](images/)
+
+#### Design module code for real implementation
 
 ```vhdl
 library IEEE;
@@ -1007,23 +1008,23 @@ fsm : entity work.fsm
         data1_o    => s_data1,
         data2_o    => s_data2,
         data3_o    => s_data3,
-        led_o(0)   => IO3,
-        led_o(1)   => IO30,
+        led_o(0)   => IO30,
+        led_o(1)   => IO3,
         relay_o    => IO31,
         siren_o    => IO4
     );
     
 keyboard : entity work.keyboard
     port map(
-        clk	  => CLK100MHZ, 
+        clk		  => CLK100MHZ, 
         reset     => BTN0,
-        col_i(0)  => IO41,
+        col_i(2)  => IO41,
         col_i(1)  => IO40,
-        col_i(2)  => IO39,   
-        row_o(0)  => IO38,
-        row_o(1)  => IO37,
-        row_o(2)  => IO36,
-        row_o(3)  => IO35,
+        col_i(0)  => IO39,   
+        row_o(3)  => IO38,
+        row_o(2)  => IO37,
+        row_o(1)  => IO36,
+        row_o(0)  => IO35,
         button_o  => s_keyboard	
     );
     
@@ -1041,13 +1042,13 @@ driver_7seg_4digits : entity work.driver_7seg_4digits
          
          dp_o     => IO11,
          
-         seg_o(0) => IO7, 
-         seg_o(1) => IO8, 
-         seg_o(2) => IO10,
+         seg_o(6) => IO7, 
+         seg_o(5) => IO8, 
+         seg_o(4) => IO10,
          seg_o(3) => IO12,
-         seg_o(4) => IO13,
-         seg_o(5) => IO34,
-         seg_o(6) => IO9,
+         seg_o(2) => IO13,
+         seg_o(1) => IO34,
+         seg_o(0) => IO9,
          
          dig_o(3) => IO6,  
          dig_o(2) => IO33, 
@@ -1060,11 +1061,354 @@ end Behavioral;
 
 ```
 
+#### Design module code for simulation
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity top is
+    Port (
+        CLK100MHZ  : in  std_logic; -- CLOCK
+        BTN0       : in  std_logic; -- RST button
+        
+--        IO41       : in  std_logic; -- COL1
+--        IO40       : in  std_logic; -- COL2
+--        IO39       : in  std_logic; -- COL3
+        
+--        IO38       : out std_logic; -- ROW1
+--        IO37       : out std_logic; -- ROW2
+--        IO36       : out std_logic; -- ROW3
+--        IO35       : out std_logic; -- ROW4
+
+        KEYBOARD   : in  std_logic_vector(4 - 1 downto 0);
+        
+        IO7        : out std_logic; -- A
+        IO8        : out std_logic; -- B
+        IO10       : out std_logic; -- C
+        IO12       : out std_logic; -- D
+        IO13       : out std_logic; -- E
+        IO34       : out std_logic; -- F
+        IO9        : out std_logic; -- G
+        IO11       : out std_logic; -- DP
+        
+        IO6        : out std_logic; -- A1
+        IO33       : out std_logic; -- A2
+        IO32       : out std_logic; -- A3
+        IO5        : out std_logic; -- A4
+        
+        IO31       : out std_logic; -- Relay
+        
+        IO3        : out std_logic; -- RED LED
+        IO30       : out std_logic; -- GREEN LED
+        
+        IO4        : out std_logic  -- Siren
+        
+     );
+end top;
+
+architecture Behavioral of top is
+
+-- internal signals
+--signal s_keyboard : std_logic_vector (4 - 1 downto 0);
+signal s_data3    : std_logic_vector (4 - 1 downto 0);
+signal s_data2    : std_logic_vector (4 - 1 downto 0);
+signal s_data1    : std_logic_vector (4 - 1 downto 0);
+signal s_data0    : std_logic_vector (4 - 1 downto 0);
+
+
+begin
+
+fsm : entity work.fsm
+    port map(
+        clk        => CLK100MHZ,
+        reset      => BTN0,
+        --keyboard_i => s_keyboard,
+        keyboard_i => KEYBOARD,
+        data0_o    => s_data0,
+        data1_o    => s_data1,
+        data2_o    => s_data2,
+        data3_o    => s_data3,
+        led_o(0)   => IO30,
+        led_o(1)   => IO3,
+        relay_o    => IO31,
+        siren_o    => IO4
+    );
+    
+--keyboard : entity work.keyboard
+--    port map(
+--        clk		  => CLK100MHZ, 
+--        reset     => BTN0,
+--        col_i(2)  => IO41,
+--        col_i(1)  => IO40,
+--        col_i(0)  => IO39,   
+--        row_o(3)  => IO38,
+--        row_o(2)  => IO37,
+--        row_o(1)  => IO36,
+--        row_o(0)  => IO35,
+--        button_o  => s_keyboard	
+--    );
+    
+driver_7seg_4digits : entity work.driver_7seg_4digits
+    port map(
+         clk      => CLK100MHZ,   
+         reset    => BTN0,
+         
+         data0_i  => s_data0,
+         data1_i  => s_data1,
+         data2_i  => s_data2,
+         data3_i  => s_data3,
+         
+         dp_i     => "1111",
+         
+         dp_o     => IO11,
+         
+         seg_o(6) => IO7, 
+         seg_o(5) => IO8, 
+         seg_o(4) => IO10,
+         seg_o(3) => IO12,
+         seg_o(2) => IO13,
+         seg_o(1) => IO34,
+         seg_o(0) => IO9,
+         
+         dig_o(3) => IO6,  
+         dig_o(2) => IO33, 
+         dig_o(1) => IO32, 
+         dig_o(0) => IO5  
+    );
+
+
+end Behavioral;
+
+```
+
+#### Testbench code
+
+```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity tb_top is
+--  Port ( );
+end tb_top;
+
+architecture testbench of tb_top is
+
+-- Local constants
+    constant c_CLK_100MHZ_PERIOD : time    := 10 ns;
+
+    --Local signals
+    signal s_clk_100MHz : std_logic;
+    signal s_reset      : std_logic;
+    signal s_keyboard   : std_logic_vector(4 - 1 downto 0);
+    signal s_cathodes   : std_logic_vector(8 - 1 downto 0);
+    signal s_anodes     : std_logic_vector(4 - 1 downto 0);
+    
+    signal s_led        : std_logic_vector(2 - 1 downto 0);
+    signal s_relay      : std_logic;
+    signal s_siren      : std_logic;
+
+begin
+    -- Connecting testbench signals with tlc entity (Unit Under Test)
+    uut_top : entity work.top
+        port map(
+            CLK100MHZ  => s_clk_100MHz,
+            BTN0       => s_reset,
+            KEYBOARD   => s_keyboard,    
+            IO7        => s_cathodes(0), -- A
+            IO8        => s_cathodes(1), -- B
+            IO10       => s_cathodes(2), -- C
+            IO12       => s_cathodes(3), -- D
+            IO13       => s_cathodes(4), -- E
+            IO34       => s_cathodes(5), -- F
+            IO9        => s_cathodes(6), -- G
+            IO11       => s_cathodes(7), -- DP
+            IO6        => s_anodes(0),   -- A1
+            IO33       => s_anodes(1),   -- A2
+            IO32       => s_anodes(2),   -- A3
+            IO5        => s_anodes(3),   -- A4
+            IO3        => s_led(0),      -- red
+            IO30       => s_led(1),      -- green
+            IO31       => s_relay,  
+            IO4        => s_siren
+        );
+
+    --------------------------------------------------------------------
+    -- Clock generation process
+    --------------------------------------------------------------------
+    p_clk_gen : process
+    begin
+        while now < 600 us loop   -- 10 usec of simulation
+            s_clk_100MHz <= '0';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+            s_clk_100MHz <= '1';
+            wait for c_CLK_100MHZ_PERIOD / 2;
+        end loop;
+        wait;
+    end process p_clk_gen;
+
+    --------------------------------------------------------------------
+    -- Reset generation process
+    --------------------------------------------------------------------
+    p_reset_gen : process
+    begin
+        s_reset <= '0'; wait for 10 us;
+        -- Reset activated
+        s_reset <= '1'; wait for 10 us;
+        -- Reset deactivated
+        s_reset <= '0';
+        wait;
+    end process p_reset_gen;
+
+    --------------------------------------------------------------------
+    -- Data generation process
+    --------------------------------------------------------------------
+    p_stimulus : process
+    begin
+        -- try bad pin
+        s_keyboard <= "1111";
+        wait for 30 us;
+        s_keyboard <= "0000";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0001";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0010";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0011";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "1011";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 30 us;
+        
+        -- try timeout
+        s_keyboard <= "0000";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0001";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 30 us;
+        
+        -- try clear
+        s_keyboard <= "0000";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0001";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "1010";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        
+        -- try correct pin
+        s_keyboard <= "0100";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0011";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0010";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "0001";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 10 us;
+        s_keyboard <= "1011";
+        wait for 5 us;
+        s_keyboard <= "1111";
+        wait for 30 us;
+
+        wait;
+    end process p_stimulus;
+
+end architecture testbench;
+
+```
+
+#### Simulation output
+
+##### Reset test
+
+![](images/sim_top_reset_and_first_number.png)
+
+##### First number typed
+
+![](images/sim_top_first_number_zoom.png)
+
+##### Second number typed
+
+![](images/sim_top_second_number_zoom.png)
+
+##### Third number typed
+
+![](images/sim_top_third_number_zoom.png)
+
+##### Forth number typed
+
+![](images/sim_top_forth_number_zoom.png)
+
+##### Timeout test
+
+![](images/sim_top_timeout.png)
+
+##### Clear button test
+
+![](images/sim_top_clear.png)
+
+##### Wrong pin test
+
+![](images/sim_top_enter_wrong_pin.png)
+
+##### Correct pin test
+
+![](images/sim_top_correct_pin.png)
+
+##### Door locked after 5 sec from enter button up
+
+![](images/sim_top_door_closed_after_5SEC_from_enter_up.png)
+
+
 ## Video
 
 *Write your text here*
 
 ## Conclusion
+
 
 
 ## References

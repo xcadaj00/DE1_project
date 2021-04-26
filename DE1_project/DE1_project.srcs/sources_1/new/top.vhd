@@ -69,8 +69,8 @@ fsm : entity work.fsm
         data1_o    => s_data1,
         data2_o    => s_data2,
         data3_o    => s_data3,
-        led_o(0)   => IO3,
-        led_o(1)   => IO30,
+        led_o(0)   => IO30,
+        led_o(1)   => IO3,
         relay_o    => IO31,
         siren_o    => IO4
     );
@@ -79,13 +79,13 @@ keyboard : entity work.keyboard
     port map(
         clk		  => CLK100MHZ, 
         reset     => BTN0,
-        col_i(0)  => IO41,
+        col_i(2)  => IO41,
         col_i(1)  => IO40,
-        col_i(2)  => IO39,   
-        row_o(0)  => IO38,
-        row_o(1)  => IO37,
-        row_o(2)  => IO36,
-        row_o(3)  => IO35,
+        col_i(0)  => IO39,   
+        row_o(3)  => IO38,
+        row_o(2)  => IO37,
+        row_o(1)  => IO36,
+        row_o(0)  => IO35,
         button_o  => s_keyboard	
     );
     
@@ -103,13 +103,13 @@ driver_7seg_4digits : entity work.driver_7seg_4digits
          
          dp_o     => IO11,
          
-         seg_o(0) => IO7, 
-         seg_o(1) => IO8, 
-         seg_o(2) => IO10,
+         seg_o(6) => IO7, 
+         seg_o(5) => IO8, 
+         seg_o(4) => IO10,
          seg_o(3) => IO12,
-         seg_o(4) => IO13,
-         seg_o(5) => IO34,
-         seg_o(6) => IO9,
+         seg_o(2) => IO13,
+         seg_o(1) => IO34,
+         seg_o(0) => IO9,
          
          dig_o(3) => IO6,  
          dig_o(2) => IO33, 

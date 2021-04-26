@@ -1,0 +1,49 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Apr 26 23:42:23 2021
+# Process ID: 3192
+# Current directory: C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5216 C:\Users\uzivatel\Documents\github\DE1_project\DE1_project_top_simulation\DE1_project.xpr
+# Log file: C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/vivado.log
+# Journal file: C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.xpr
+update_compile_order -fileset sources_1
+set_property -name {xsim.simulate.runtime} -value {9ms} -objects [get_filesets sim_1]
+update_compile_order -fileset sources_1
+file mkdir C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sim_1/new/tb_top.vhd w ]
+add_files -fileset sim_1 C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sim_1/new/tb_top.vhd
+update_compile_order -fileset sim_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_top [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+launch_simulation
+source tb_top.tcl
+close_sim
+launch_simulation
+source tb_top.tcl
+current_wave_config {Untitled 2}
+add_wave {{/tb_top/uut_top/fsm/s_state}} 
+relaunch_sim
+set_property -name {xsim.simulate.runtime} -value {900us} -objects [get_filesets sim_1]
+close_sim
+launch_simulation
+source tb_top.tcl
+current_wave_config {Untitled 3}
+add_wave {{/tb_top/uut_top/fsm/s_state}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+save_wave_config {C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/tb_top_behav.wcfg}
+add_files -fileset sim_1 -norecurse C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/tb_top_behav.wcfg
+set_property xsim.view C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/tb_top_behav.wcfg [get_filesets sim_1]
+close_sim

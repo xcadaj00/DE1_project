@@ -1,8 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../project_de1.srcs/sources_1/new/clock_enable.vhd" \
-"../../../../project_de1.srcs/sources_1/new/keyboard.vhd" \
-"../../../../project_de1.srcs/sim_1/new/tb_keyboard.vhd" \
-
-# Do not sort compile order
-nosort

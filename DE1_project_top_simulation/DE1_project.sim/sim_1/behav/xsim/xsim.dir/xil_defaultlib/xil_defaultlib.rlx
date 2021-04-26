@@ -1,0 +1,11 @@
+0.7
+2020.2
+Nov 18 2020
+09:47:47
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sim_1/new/tb_top.vhd,1619475100,vhdl,,,,tb_top,,,,,,,,
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/clock_enable.vhd,1615501425,vhdl,C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/driver_7seg_4digits.vhd;C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/fsm.vhd,,,clock_enable,,,,,,,,
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/cnt_up_down.vhd,1615503305,vhdl,C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/driver_7seg_4digits.vhd,,,cnt_up_down,,,,,,,,
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/driver_7seg_4digits.vhd,1619473555,vhdl,C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/top.vhd,,,driver_7seg_4digits,,,,,,,,
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/fsm.vhd,1619473571,vhdl,C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/top.vhd,,,fsm,,,,,,,,
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/hex_7seg.vhd,1619385579,vhdl,C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/driver_7seg_4digits.vhd,,,hex_7seg,,,,,,,,
+C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sources_1/new/top.vhd,1619475949,vhdl,C:/Users/uzivatel/Documents/github/DE1_project/DE1_project_top_simulation/DE1_project.srcs/sim_1/new/tb_top.vhd,,,top,,,,,,,,
