@@ -259,7 +259,8 @@ This module is used to periodically read pressed buttons from 4*3 matrix keyboar
 | ENTER | `1011` | `b` |
 | default | `1111` | `f` |
 
-`p_keyboard` process receives a 3-bit vector that indicates a specific column with a value of 0 (011 - first, 101 - second, 110 - third, 111 - no input). The process runs through a loop every 10 ns, periodically changing the values of the 4-bit row vector and sets the output value based on the input vector and the momentary row value.
+`p_keyboard` process receives a 3-bit vector that indicates a specific column with a value of 0 (011 - first, 101 - second, 110 - third, 111 - no input). The process runs through a loop every 100 ms (10 ns for faster simulation), periodically changing the values of the 4-bit row vector and sets the output value based on the input vector and the momentary row value.
+`clock_enable` module from Labs is used here. 
 
 #### Design module code
 
@@ -271,7 +272,7 @@ use ieee.std_logic_1164.all;
 entity keyboard is 
 port(
     clk		    :   in  std_logic;
-    reset	    :   in  std_logic;
+    reset    	:   in  std_logic;
     col_i	    :   in  std_logic_vector(2 downto 0);
     row_o	    :   out std_logic_vector(3 downto 0);	
     button_o	:   out std_logic_vector(3 downto 0)
@@ -286,12 +287,12 @@ architecture Behavioral of keyboard is
 begin
     clk_en0 : entity work.clock_enable
         generic map(
-            g_MAX => 1 -- 100ms with 10kHz signal
+            g_MAX   => 1 -- 1 for faster simulation, for implementation 10000000 - 100ms with 100MHz signal
         )
         port map(
-            clk     =>  clk,
-            reset   =>  reset,
-            ce_o    =>  en
+            clk     => clk,
+            reset   => reset,
+            ce_o    => en
         );
 
     p_keyboard: process(clk)
@@ -354,6 +355,7 @@ begin
         end if;
     end process p_keyboard;
 end;
+
 ```
 
 #### Testbench code
@@ -475,6 +477,7 @@ This module is main function module implementing finite state machine.
 This module has 4bit input, where keyboard can be connected. 
 It has also outputs for display (4bit value for each digit, "1111" (i.e. hex 'F') means blank), relay and dualcolor LED (2bit anode value) and siren. 
 PIN "4321" is hardcoded as constant in this module. 
+`clock_enable` module from Labs is used here. 
 
 
 #### State diagram
@@ -923,34 +926,137 @@ end architecture testbench;
 
 ![](images/sim_fsm_correct_pin.png)
 
-### `.vhd`
-
-This module ...
-
-#### Design module code
-
-```vhdl
-
-```
-
-#### Testbench code
-
-```vhdl
-
-```
-
-#### Simulation output
-
-![](images/_tb.png)
-
 
 ## TOP module description and simulations
 
-This module is used to implement `fsm.vhd` onto Arty A7 development board.
+This module is used to implement all modules onto Arty A7-35T development board. 
+Module `driver_7seg_4digits` from Labs is used here with small change, F cathode value in `hex_7seg` module is set to "1111111" as blank digit. 
+There are also modules `clock_enable`, `cnt_up_down` inside this driver module. 
 
 #### Design module code
 
 ```vhdl
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
+
+entity top is
+    Port (
+        CLK100MHZ  : in  std_logic; -- CLOCK
+        BTN0       : in  std_logic; -- RST button
+        
+        IO41       : in  std_logic; -- COL1
+        IO40       : in  std_logic; -- COL2
+        IO39       : in  std_logic; -- COL3
+        
+        IO38       : out std_logic; -- ROW1
+        IO37       : out std_logic; -- ROW2
+        IO36       : out std_logic; -- ROW3
+        IO35       : out std_logic; -- ROW4
+        
+        IO7        : out std_logic; -- A
+        IO8        : out std_logic; -- B
+        IO10       : out std_logic; -- C
+        IO12       : out std_logic; -- D
+        IO13       : out std_logic; -- E
+        IO34       : out std_logic; -- F
+        IO9        : out std_logic; -- G
+        IO11       : out std_logic; -- DP
+        
+        IO6        : out std_logic; -- A1
+        IO33       : out std_logic; -- A2
+        IO32       : out std_logic; -- A3
+        IO5        : out std_logic; -- A4
+        
+        IO31       : out std_logic; -- Relay
+        
+        IO3        : out std_logic; -- RED LED
+        IO30       : out std_logic; -- GREEN LED
+        
+        IO4        : out std_logic  -- Siren
+        
+     );
+end top;
+
+architecture Behavioral of top is
+
+-- internal signals
+signal s_keyboard : std_logic_vector (4 - 1 downto 0);
+signal s_data3    : std_logic_vector (4 - 1 downto 0);
+signal s_data2    : std_logic_vector (4 - 1 downto 0);
+signal s_data1    : std_logic_vector (4 - 1 downto 0);
+signal s_data0    : std_logic_vector (4 - 1 downto 0);
+
+
+begin
+
+fsm : entity work.fsm
+    port map(
+        clk        => CLK100MHZ,
+        reset      => BTN0,
+        keyboard_i => s_keyboard,
+        data0_o    => s_data0,
+        data1_o    => s_data1,
+        data2_o    => s_data2,
+        data3_o    => s_data3,
+        led_o(0)   => IO3,
+        led_o(1)   => IO30,
+        relay_o    => IO31,
+        siren_o    => IO4
+    );
+    
+keyboard : entity work.keyboard
+    port map(
+        clk		  => CLK100MHZ, 
+        reset     => BTN0,
+        col_i(0)  => IO41,
+        col_i(1)  => IO40,
+        col_i(2)  => IO39,   
+        row_o(0)  => IO38,
+        row_o(1)  => IO37,
+        row_o(2)  => IO36,
+        row_o(3)  => IO35,
+        button_o  => s_keyboard	
+    );
+    
+driver_7seg_4digits : entity work.driver_7seg_4digits
+    port map(
+         clk      => CLK100MHZ,   
+         reset    => BTN0,
+         
+         data0_i  => s_data0,
+         data1_i  => s_data1,
+         data2_i  => s_data2,
+         data3_i  => s_data3,
+         
+         dp_i     => "1111",
+         
+         dp_o     => IO11,
+         
+         seg_o(0) => IO7, 
+         seg_o(1) => IO8, 
+         seg_o(2) => IO10,
+         seg_o(3) => IO12,
+         seg_o(4) => IO13,
+         seg_o(5) => IO34,
+         seg_o(6) => IO9,
+         
+         dig_o(3) => IO6,  
+         dig_o(2) => IO33, 
+         dig_o(1) => IO32, 
+         dig_o(0) => IO5  
+    );
+
+
+end Behavioral;
 
 ```
 
