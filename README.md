@@ -1016,7 +1016,7 @@ fsm : entity work.fsm
     
 keyboard : entity work.keyboard
     port map(
-        clk		  => CLK100MHZ, 
+        clk       => CLK100MHZ, 
         reset     => BTN0,
         col_i(2)  => IO41,
         col_i(1)  => IO40,
@@ -1025,7 +1025,7 @@ keyboard : entity work.keyboard
         row_o(2)  => IO37,
         row_o(1)  => IO36,
         row_o(0)  => IO35,
-        button_o  => s_keyboard	
+        button_o  => s_keyboard 
     );
     
 driver_7seg_4digits : entity work.driver_7seg_4digits
@@ -1146,7 +1146,7 @@ fsm : entity work.fsm
     
 --keyboard : entity work.keyboard
 --    port map(
---        clk		  => CLK100MHZ, 
+--        clk         => CLK100MHZ, 
 --        reset     => BTN0,
 --        col_i(2)  => IO41,
 --        col_i(1)  => IO40,
@@ -1155,7 +1155,7 @@ fsm : entity work.fsm
 --        row_o(2)  => IO37,
 --        row_o(1)  => IO36,
 --        row_o(0)  => IO35,
---        button_o  => s_keyboard	
+--        button_o  => s_keyboard   
 --    );
     
 driver_7seg_4digits : entity work.driver_7seg_4digits
