@@ -932,7 +932,7 @@ Project copy used for this simulation is [here](https://github.com/xcadaj00/DE1_
 
 #### Schematic
 
-![](images/)
+![](images/Top_schema (2).png)
 
 #### Design module code for real implementation
 
