@@ -250,7 +250,7 @@ For simulation, it is speeded up by 10000000 by `g_MAX` value set to 1 instead o
 
 #### Schematic
 
-![](images/)
+![](images/keyboard_scheme.png)
 
 #### Design module code
 
