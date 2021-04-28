@@ -476,7 +476,7 @@ For simulation, it is speeded up by 1000000 by `g_MAX` value set to 25 instead o
 
 #### Schematic
 
-![](images/)
+![](images/fsm_scheme.png)
 
 #### Design module code
 
