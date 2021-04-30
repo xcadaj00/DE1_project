@@ -1405,7 +1405,7 @@ end architecture testbench;
 
 ## Video
 
-*Write your text here*
+[https://youtu.be/sbKR1g3LVvE](https://youtu.be/sbKR1g3LVvE)
 
 ## Conclusion
 
