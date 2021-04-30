@@ -1409,9 +1409,10 @@ end architecture testbench;
 
 ## Conclusion
 
+We started with hardware design: we choosed components, made PCB for our custom shield and write documentation (schematics, component tables, pins and ports tables). Then we succesfully designed and tested all required modules (matrix keyboard and finite state machine). We also used `driver_7seg_4digits` module from labs to drive our 4-digit 7-segment display and `clock_enable` module as clock divider. Then we connected all modules together in `top` module. This top module was then used to generate Bitstream, which can be used to program physical board Arty A7-35T. Because it is impossible now to test it physically, we slightly modified the top module and writed top testbench to get simulation as close as possible to the real world testing. Everything seems to work correctly. 
 
-
+<!--
 ## References
 
    1. 
-   
+ -->  
