@@ -315,7 +315,7 @@ Module `driver_7seg_4digits` from Labs is used here with small change, F cathode
 There are also modules `clock_enable`, `cnt_up_down` from Labs inside this driver module. 
 For top module simulation, I speeded up the simulation by 100000 (`g_MAX` values in `clock_enable` modules in all used modules are divided by 100000), so 10 us in simulation is like 1 second in reality. 
 I also removed `keyboard` module to simplify the simulation, because simulating matrix keyboard pushes could be a bit confusing and all button pushes were already simulated in keyboard testbench and there is no additional logic around it in the top module. 
-Project copy used for this simulation is [here](https://github.com/xcadaj00/DE1_project/DE1_project_top_simulation), top module design code edited for simulation is listed here underneath the real implementation code. 
+Project copy used for this simulation is [here](https://github.com/xcadaj00/DE1_project/tree/main/DE1_project_top_simulation), top module design code edited for simulation is listed here underneath the real implementation code. 
 
 #### Schematic
 
